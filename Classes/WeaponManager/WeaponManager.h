@@ -4,7 +4,7 @@
 #include "cocos2d.h"
 #include "EntityManager/EntityStat.h"
 #include "UILayer/UIManager.h"
-#include "AudioManager/AudioManager.h"
+#include "Audio/AudioManager.h"
 #include "WeaponManager/Bullet.h"
 
 using namespace cocos2d;
