@@ -3,15 +3,15 @@
 #define __INTROSCENE_H__
 
 #include "cocos2d.h"
-#include "Character.h"
-#include "WeaponManager.h"
+#include "EntityManager/Character.h"
+#include "WeaponManager/WeaponManager.h"
 #include "UILayer/UIManager.h"
-#include "MainMenuScene.h"
-#include "KeyboardInput.h"
-#include "Enemy.h"
-#include "Bullet.h"
-#include "SpawnObjects.h"
-#include "IDamageable.h"
+#include "MenuManager/MainMenuScene.h"
+#include "UserInput/KeyboardInput.h"
+#include "EntityManager/Enemy.h"
+#include "WeaponManager/Bullet.h"
+#include "Map/SpawnObjects.h"
+#include "EntityManager/IDamageable.h"
 
 using namespace cocos2d;
 

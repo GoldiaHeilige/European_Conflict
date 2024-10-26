@@ -6,6 +6,8 @@
 #include "EntityInfo.h"
 #include "IDamageable.h"
 
+#include "AnimManager/AnimationUtils.h"
+
 USING_NS_CC;
 
 class Entity : public Node

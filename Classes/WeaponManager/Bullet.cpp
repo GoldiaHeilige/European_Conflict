@@ -1,6 +1,4 @@
 ﻿#include "Bullet.h"
-#include "Enemy.h"
-#include "IDamageable.h"
 #include <typeinfo>	
 
 Bullet* Bullet::create(Entity* entity, float spd, std::string bulletName)

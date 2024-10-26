@@ -1,6 +1,5 @@
 ﻿#include "MainMenuScene.h"
-#include "IntroScene.h"
-#include "GameScene.h"
+#include "Map/IntroScene.h"
 #include "audio/include/AudioEngine.h"
 
 USING_NS_CC;
@@ -31,8 +30,8 @@ bool MainMenuScene::init()
 
     /**********
     *
-    *  FIRST GAME LABEL 
-    * 
+    *  FIRST GAME LABEL
+    *
     ***********/
 
     auto menuNode1 = Sprite::create("UI/InventoryUIAtlas.png", Rect(1000, 690, 280, 250));
@@ -60,9 +59,9 @@ bool MainMenuScene::init()
     this->addChild(startLabel, 15);
 
     /**********
-    * 
+    *
     *  SECOND GAME LABEL
-    * 
+    *
     **********/
 
     auto menuNode2 = Sprite::create("UI/InventoryUIAtlas.png", Rect(755, 690, 280, 250));
@@ -76,9 +75,9 @@ bool MainMenuScene::init()
     this->addChild(menuNodeShadow2, 9);
 
     /**********
-    * 
+    *
     *  THIRD GAME LABEL
-    * 
+    *
     **********/
 
     auto menuNode3 = Sprite::create("UI/InventoryUIAtlas.png", Rect(755, 690, 280, 250));
@@ -99,9 +98,9 @@ bool MainMenuScene::init()
     this->addChild(quitLabel, 15);
 
     /**********
-    * 
+    *
     *  GAME TITLE AND OTHERS
-    * 
+    *
     **********/
 
     _background = Sprite::create("Map/LocationPortraits/War.png");
@@ -109,8 +108,8 @@ bool MainMenuScene::init()
     _background->setContentSize(visibleSize);
     this->addChild(_background, 0);
 
-    auto menuLeft = MoveBy::create(5.0f, Vec2(-70, 0)); 
-    auto menuRight = MoveBy::create(5.0f, Vec2(70, 0)); 
+    auto menuLeft = MoveBy::create(5.0f, Vec2(-70, 0));
+    auto menuRight = MoveBy::create(5.0f, Vec2(70, 0));
     auto menuDelay = DelayTime::create(3);
     auto menuSequence = Sequence::create(menuDelay, menuLeft, menuDelay->clone(), menuRight, nullptr);
 

@@ -2,7 +2,7 @@
 #define __SPAWN_OBJECTS_H__
 
 #include "cocos2d.h"
-#include "AnimationUtils.h"
+#include "AnimManager/AnimationUtils.h"
 
 class SpawnObjects {
 public:

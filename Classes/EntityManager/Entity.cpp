@@ -1,5 +1,4 @@
 ﻿#include "Entity.h"
-#include "AnimationUtils.h"
 
 Entity* Entity::create(EntityInfo* info, EntityStat* entityStat)
 {

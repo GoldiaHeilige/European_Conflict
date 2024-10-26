@@ -1,5 +1,4 @@
 ﻿#include "WeaponManager.h"
-#include "Bullet.h"
 
 WeaponManager::WeaponManager() {
     initializeWeapons();
@@ -51,7 +50,7 @@ void WeaponManager::shoot(Node* characterNode, Vec2 direction) {
             bullet->setRotation(-angle + 90);
 
             characterNode->getParent()->addChild(bullet);
-            _currentWeaponStats->_currentAmmo--;  // Decrement ammo here
+            _currentWeaponStats->_currentAmmo--;
             UIManager::getInstance()->updateAmmoDisplay(_currentWeaponStats->_currentAmmo, _currentWeaponStats->_totalAmmo);
             CCLOG("Bullet fired! Current Ammo: %lf", _currentWeaponStats->_currentAmmo);
         }

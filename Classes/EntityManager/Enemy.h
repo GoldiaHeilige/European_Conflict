@@ -3,7 +3,8 @@
 
 #include "Entity.h"
 #include "IDamageable.h"
-#include "AnimationUtils.h"
+
+#include "AnimManager/AnimationUtils.h"
 
 class Enemy : public Entity, public IDamageable
 {
@@ -13,7 +14,7 @@ public:
     void takeDame(int dame) override;
 private:
     void die();
-	void update(float dt);
+    void update(float dt);
 };
 
 #endif // !__ENEMY_H__

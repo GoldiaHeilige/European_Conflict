@@ -2,8 +2,10 @@
 #define __BULLET_H__
 
 #include "cocos2d.h"
-#include "Entity.h"
-#include "WeaponManager.h"	
+#include "EntityManager/Entity.h"
+#include "EntityManager/Enemy.h"
+#include "EntityManager/IDamageable.h"
+#include "WeaponManager/WeaponManager.h"	
 
 using namespace cocos2d;
 

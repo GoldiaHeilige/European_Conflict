@@ -2,7 +2,7 @@
 #define __UIManager_H__
 
 #include "cocos2d.h"
-#include "WeaponManager.h"
+#include "WeaponManager/WeaponManager.h"
 
 USING_NS_CC;
 

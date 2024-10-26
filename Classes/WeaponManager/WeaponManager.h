@@ -2,9 +2,10 @@
 #define __WEAPON_MANAGER_H__
 
 #include "cocos2d.h"
-#include "EntityStat.h"
+#include "EntityManager/EntityStat.h"
 #include "UILayer/UIManager.h"
 #include "AudioManager/AudioManager.h"
+#include "WeaponManager/Bullet.h"
 
 using namespace cocos2d;
 

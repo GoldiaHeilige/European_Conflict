@@ -3,10 +3,12 @@
 
 #include "Entity.h"
 #include "IDamageable.h"
-#include "AnimationUtils.h"
-#include "Bullet.h"
-#include "MainMenuScene.h"
-#include "WeaponManager.h"
+
+#include "AnimManager/AnimationUtils.h"
+#include "MenuManager/MainMenuScene.h"
+
+#include "WeaponManager/WeaponManager.h"
+#include "WeaponManager/Bullet.h"
 
 class Character : public Entity
 {
@@ -16,7 +18,7 @@ public:
     bool init(EntityInfo* info, EntityStat* entityStat);
 
     void move(Vec2 direction);
-    void rotateBody(float angle); 
+    void rotateBody(float angle);
     void takeDame(int dame);
 
     void shoot(Vec2 direction);

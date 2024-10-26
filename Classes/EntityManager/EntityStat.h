@@ -16,7 +16,6 @@ public:
     float _currentAmmo;  // Current weapon ammo
     float _currentMag;   // Total ammo of the mag 
     float _totalAmmo;    // Total ammo of current weapon
-    std::string _shootSFX;
 
     // Use an int to represent the current weapon type
     int _currentWeapon; // Instead of WeaponManager::WeaponType

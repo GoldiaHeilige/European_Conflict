@@ -76,7 +76,6 @@ void Character::switchWeapon(WeaponManager::WeaponType newWeaponType) {
 
 void Character::attack() {
     float attackDamage = _stat->_weaponStats->_atk; // Use weapon's attack damage
-    // Logic for attacking with the damage...
 }
 
 void Character::move(Vec2 direction)
