@@ -1,4 +1,4 @@
-- This is a simple 2D Top-Down shooter mobile game made for school project. The game taken some idea from Fallout series, SAS4 and some few other indie games
+- This is a simple 2D Top-Down shooter mobile game made from Cocos2d-x, Tiled, SpriteSheet Packer,... and these will be used for school group project. The game taken some idea from Fallout series, SAS4 and some few other indie games
 
 - This game use asset from TDS Modern Pack from CraftPix and others asset from Barotrauma and a few more.
 
