@@ -1,0 +1,42 @@
+{
+    "weapons": [
+      {
+        "weaponID": 1,
+        "weaponName": "Glock 17",
+        "category": "Handgun",
+        "fireSFX": "Revolver1.ogg",
+        "reloadSFX": "reload_pistol.ogg",
+        "bulletSprite": "pistol1",
+        "gunChamber": "reload_pistolChamber.ogg",
+        "atk": 10.0,
+        "critChance": 20.0,
+        "critDmg": 20.0,
+        "piercingChance": 20.0,
+        "armorDmg": 15.0,
+        "totalAmmoMax": 50,
+        "weaponMag": 12,
+        "bulletVelocity": 400.0,
+        "ammoType": 9,
+        "reloadTime": 2.5
+      },
+      {
+        "weaponID": 2,
+        "weaponName": "UMP45",
+        "category": "Submachine Gun",
+        "fireSFX": "SMGsingleShot1.ogg",
+        "reloadSFX": "reload_smg.ogg",
+        "bulletSprite": "ar1",
+        "atk": 20.0,
+        "critChance": 15.0,
+        "critDmg": 30.5,
+        "piercingChance": 35.0,
+        "armorDmg": 160.0,
+        "totalAmmoMax": 100,
+        "weaponMag": 30,
+        "bulletVelocity": 450.0,
+        "ammoType": 45,
+        "reloadTime": 3.0
+      }
+    ]
+  }
+  

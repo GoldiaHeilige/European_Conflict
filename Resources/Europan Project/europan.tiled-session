@@ -1,0 +1,390 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
+        "E:/Cocos2d/Europa/Resources/BTR_Base.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europa/Resources/BrokenBase.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europa/Resources/Broken_Helicopter.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europa/Resources/Building/Building Broken/industrial_building/building_broken.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europa/Resources/Building/Shadows/Shadows_Building_Object.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 0.33
+        },
+        "E:/Cocos2d/Europa/Resources/Building/building_industrial/industrial_buildings.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europa/Resources/Building/building_industrial/industrial_elements.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europa/Resources/Building/building_storerooms/storerooms_broken.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europa/Resources/Building/building_storerooms/storerooms_broken_elements.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europa/Resources/Building/building_storerooms/storerooms_normal.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europa/Resources/Building/building_warehouses/Details/warehouses_details.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europa/Resources/Building/building_warehouses/warehouses_broken.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europa/Resources/Building/building_warehouses/warehouses_elements.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europa/Resources/Building/building_warehouses/warehouses_normal.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europa/Resources/Building/objects/objects_broken.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 0.33
+        },
+        "E:/Cocos2d/Europa/Resources/Building/objects/objects_normal.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 0.25
+        },
+        "E:/Cocos2d/Europa/Resources/Building/small_building/Details/small_details.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europa/Resources/Building/small_building/Details/small_details_broken.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europa/Resources/Building/small_building/building_broken_elements.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europa/Resources/Building/small_building/building_small.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europa/Resources/Building/small_building/building_small_broken.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europa/Resources/Building/small_building/building_small_elements.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europa/Resources/Building_Test.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europa/Resources/Buildings_source.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1.5
+        },
+        "E:/Cocos2d/Europa/Resources/Dự án mới.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 2
+        },
+        "E:/Cocos2d/Europa/Resources/Ground_grass.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 3
+        },
+        "E:/Cocos2d/Europa/Resources/Objects.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 3
+        },
+        "E:/Cocos2d/Europa/Resources/TDS_Buildings.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1.5
+        },
+        "E:/Cocos2d/Europa/Resources/TDS_Buildings_Objects_broken.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 3
+        },
+        "E:/Cocos2d/Europa/Resources/TDS_Civil_cars.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 0.75,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europa/Resources/TDS_Civil_cars_broken.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1.5
+        },
+        "E:/Cocos2d/Europa/Resources/TDS_Z_Building1.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 0.75,
+            "scaleInEditor": 2
+        },
+        "E:/Cocos2d/Europa/Resources/TDS_Z_Building6.tsx": {
+            "scaleInDock": 0.25,
+            "scaleInEditor": 0.75
+        },
+        "E:/Cocos2d/Europa/Resources/TEST.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 0.125
+        },
+        "E:/Cocos2d/Europa/Resources/Tileset.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europa/Resources/Tilesets/Other/Others.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europa/Resources/Tilesets/Tiles_Shadow/tiles_shadow.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europa/Resources/Tilesets/Tileset.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europa/Resources/Tilesets/tilesets.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europa/Resources/Vehicle/Civil Vehicle/Civil Broken/civil_vehicle_broken.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europa/Resources/Vehicle/Civil Vehicle/Civil Normal/civil_vehicle_normal.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 0.33
+        },
+        "E:/Cocos2d/Europa/Resources/Water_coasts.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 5.5
+        },
+        "E:/Cocos2d/Europa/Resources/europa-map.tmx": {
+            "scale": 1.5,
+            "selectedLayer": -1,
+            "viewCenter": {
+                "x": 228.66666666666669,
+                "y": 283.66666666666663
+            }
+        },
+        "E:/Cocos2d/Europa/Resources/test.tmx": {
+            "scale": 2,
+            "selectedLayer": -1,
+            "viewCenter": {
+                "x": 366.25,
+                "y": 6064.75
+            }
+        },
+        "E:/Cocos2d/Europa/Resources/water_detilazation_v2.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 3
+        },
+        "E:/Cocos2d/Europan_Conflict/Resources/Broken_Helicopter.tsx": {
+            "scaleInDock": 1
+        },
+        "E:/Cocos2d/Europan_Conflict/Resources/Building/building_industrial/Elements/industrial_broken_elements.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europan_Conflict/Resources/Building/building_industrial/industrial_buildings.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europan_Conflict/Resources/Building/building_industrial/industrial_buildings_broken.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europan_Conflict/Resources/Building/building_industrial/industrial_buildings_normal.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 0.75,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europan_Conflict/Resources/Building_Test.tsx": {
+            "scaleInDock": 1
+        },
+        "E:/Cocos2d/Europan_Conflict/Resources/Chapter_Intro.tmx": {
+            "scale": 2,
+            "selectedLayer": 10,
+            "viewCenter": {
+                "x": 1105.75,
+                "y": 363.75
+            }
+        },
+        "E:/Cocos2d/Europan_Conflict/Resources/Europan_Conflict.tmx": {
+            "expandedObjectLayers": [
+                13,
+                7,
+                3
+            ],
+            "scale": 0.75,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 3007.333333333333,
+                "y": 2996.6666666666665
+            }
+        },
+        "E:/Cocos2d/Europan_Conflict/Resources/Europan_Map.tmx": {
+            "scale": 0.33,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1610.6060606060605,
+                "y": 5486.363636363636
+            }
+        },
+        "E:/Cocos2d/Europan_Conflict/Resources/Map/Building/building_industrial/Elements/industrial_broken_elements.tsx": {
+            "scaleInDock": 1
+        },
+        "E:/Cocos2d/Europan_Conflict/Resources/Map/Building/building_industrial/industrial_buildings_broken.tsx": {
+            "scaleInDock": 1
+        },
+        "E:/Cocos2d/Europan_Conflict/Resources/Map/Building/building_industrial/industrial_buildings_normal.tsx": {
+            "scaleInDock": 1
+        },
+        "E:/Cocos2d/Europan_Conflict/Resources/Map/Chapter_Intro.tmx": {
+            "scale": 0.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1115,
+                "y": 447
+            }
+        },
+        "E:/Cocos2d/Europan_Conflict/Resources/Map/Chapters/Chapter_Intro.tmx": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 407,
+                "y": 517.5
+            }
+        },
+        "E:/Cocos2d/Europan_Conflict/Resources/Map/Chapters/Tilesets/Tileset.tsx": {
+            "scaleInDock": 1
+        },
+        "E:/Cocos2d/Europan_Conflict/Resources/Map/Tilesets/Tileset.tsx": {
+            "scaleInDock": 1
+        },
+        "E:/Cocos2d/Europan_Conflict/Resources/Map/Vehicle/Civil Vehicle/Civil Normal/civil_vehicle_normal.tsx": {
+            "scaleInDock": 1
+        },
+        "E:/Cocos2d/Europan_Conflict/Resources/TDS_Civil_cars.tsx": {
+            "scaleInDock": 1
+        },
+        "E:/Cocos2d/Europan_Conflict/Resources/Tileset.tsx": {
+            "scaleInDock": 1
+        },
+        "E:/Cocos2d/Europan_Conflict/Resources/Tilesets/Tileset.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 0.75,
+            "scaleInEditor": 0.5
+        },
+        "E:/Cocos2d/Europan_Conflict/Resources/Tilesets/natural.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "E:/Cocos2d/Europan_Conflict/Resources/Vehicle/Civil Vehicle/Civil Broken/civil_vehicle_broken.tsx": {
+            "scaleInDock": 0.25
+        },
+        "E:/Cocos2d/Europan_Conflict/Resources/Vehicle/Civil Vehicle/Civil Normal/civil_vehicle_normal.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 0.25,
+            "scaleInEditor": 0.25
+        },
+        "E:/Cocos2d/Europan_Conflict/Resources/Vehicle/Civil Vehicle/police_car.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/Cocos2d/Europan_Conflict/Resources/broken_industrial_buildings1.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "E:/Cocos2d/Europan_Conflict/Tilesets/Tileset.tsx": {
+            "scaleInDock": 1
+        },
+        "E:/Cocos2d/Tilesets/Tileset.tsx": {
+            "scaleInDock": 1
+        },
+        "Tileset.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "europa-map.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 224.66666666666669,
+                "y": 462.33333333333337
+            }
+        }
+    },
+    "last.exportedFilePath": "E:/Cocos2d/Europan_Conflict/Resources/Map/Chapters",
+    "last.externalTilesetPath": "E:/Cocos2d/Europan_Conflict/Resources/Vehicle/Civil Vehicle/Civil Normal",
+    "last.imagePath": "E:/Cocos2d/Europan_Conflict/Resources/Building/building_industrial/Elements",
+    "map.height": 13,
+    "map.lastUsedExportFilter": "All Files (*)",
+    "map.lastUsedFormat": "tmx",
+    "map.layerDataFormat": null,
+    "map.tileHeight": 64,
+    "map.tileWidth": 64,
+    "map.width": 100,
+    "openFiles": [
+    ],
+    "project": "europa.tiled-project",
+    "property.type": "float",
+    "recentFiles": [
+        "E:/Cocos2d/Europan_Conflict/Resources/Map/Chapter_Intro.tmx",
+        "E:/Cocos2d/Europan_Conflict/Resources/Building/building_industrial/industrial_buildings_normal.tsx",
+        "E:/Cocos2d/Europan_Conflict/Resources/Chapter_Intro.tmx",
+        "E:/Cocos2d/Europan_Conflict/Resources/Vehicle/Civil Vehicle/Civil Normal/civil_vehicle_normal.tsx",
+        "E:/Cocos2d/Europan_Conflict/Resources/Building/building_industrial/industrial_buildings_broken.tsx",
+        "E:/Cocos2d/Europan_Conflict/Resources/Building/building_industrial/Elements/industrial_broken_elements.tsx",
+        "E:/Cocos2d/Europan_Conflict/Resources/Tilesets/Tileset.tsx",
+        "E:/Cocos2d/Europan_Conflict/Resources/Map/Chapters/Chapter_Intro.tmx",
+        "E:/Cocos2d/Europan_Conflict/Resources/Europan_Conflict.tmx",
+        "E:/Cocos2d/Europan_Conflict/Resources/Building/building_industrial/industrial_buildings.tsx",
+        "E:/Cocos2d/Europan_Conflict/Resources/Vehicle/Civil Vehicle/police_car.tsx",
+        "E:/Cocos2d/Europan_Conflict/Resources/Europan_Map.tmx"
+    ],
+    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.margin": 0,
+    "tileset.spacing": 0,
+    "tileset.tileSize": {
+        "height": 64,
+        "width": 64
+    },
+    "tileset.type": 1
+}
