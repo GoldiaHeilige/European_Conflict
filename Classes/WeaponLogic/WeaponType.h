@@ -5,12 +5,13 @@
 #include <string>
 #include "WeaponStat.h"
 
-class WeaponType {
+class WeaponType
+{
 public:
     WeaponType();
 
-    bool loadWeaponTypesFromJSON(const std::string& filePath);
-    WeaponStat getWeaponStatByID(int weaponID) const;
+    void initializeWeaponTypes();
+    WeaponStat getWeaponStatByID(int weaponID);
 
 private:
     std::unordered_map<int, WeaponStat> _weaponStats;

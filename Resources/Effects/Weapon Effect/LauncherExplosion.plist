@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+ <dict>
+  <key>frames</key>
+  <dict>
+   <key>./LauncherExplosion (1)</key>
+   <dict>
+    <key>aliases</key>
+    <array/>
+    <key>spriteOffset</key>
+    <string>{-1,0}</string>
+    <key>spriteSize</key>
+    <string>{26,25}</string>
+    <key>spriteSourceSize</key>
+    <string>{64,64}</string>
+    <key>textureRect</key>
+    <string>{{98,65},{26,25}}</string>
+    <key>textureRotated</key>
+    <false/>
+   </dict>
+   <key>./LauncherExplosion (2)</key>
+   <dict>
+    <key>aliases</key>
+    <array/>
+    <key>spriteOffset</key>
+    <string>{-1,0}</string>
+    <key>spriteSize</key>
+    <string>{48,47}</string>
+    <key>spriteSourceSize</key>
+    <string>{64,64}</string>
+    <key>textureRect</key>
+    <string>{{0,65},{48,47}}</string>
+    <key>textureRotated</key>
+    <false/>
+   </dict>
+   <key>./LauncherExplosion (3)</key>
+   <dict>
+    <key>aliases</key>
+    <array/>
+    <key>spriteOffset</key>
+    <string>{-1,0}</string>
+    <key>spriteSize</key>
+    <string>{54,53}</string>
+    <key>spriteSourceSize</key>
+    <string>{64,64}</string>
+    <key>textureRect</key>
+    <string>{{62,0},{54,53}}</string>
+    <key>textureRotated</key>
+    <false/>
+   </dict>
+   <key>./LauncherExplosion (4)</key>
+   <dict>
+    <key>aliases</key>
+    <array/>
+    <key>spriteOffset</key>
+    <string>{0,0}</string>
+    <key>spriteSize</key>
+    <string>{46,45}</string>
+    <key>spriteSourceSize</key>
+    <string>{64,64}</string>
+    <key>textureRect</key>
+    <string>{{50,65},{46,45}}</string>
+    <key>textureRotated</key>
+    <false/>
+   </dict>
+   <key>./LauncherExplosion (5)</key>
+   <dict>
+    <key>aliases</key>
+    <array/>
+    <key>spriteOffset</key>
+    <string>{0,0}</string>
+    <key>spriteSize</key>
+    <string>{60,63}</string>
+    <key>spriteSourceSize</key>
+    <string>{64,64}</string>
+    <key>textureRect</key>
+    <string>{{0,0},{60,63}}</string>
+    <key>textureRotated</key>
+    <false/>
+   </dict>
+  </dict>
+  <key>metadata</key>
+  <dict>
+   <key>format</key>
+   <integer>3</integer>
+   <key>size</key>
+   <string>{126,114}</string>
+   <key>textureFileName</key>
+   <string>LauncherExplosion.png</string>
+  </dict>
+ </dict>
+</plist>

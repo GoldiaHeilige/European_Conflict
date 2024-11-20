@@ -9,6 +9,7 @@ public:
     int _weaponID;                // ID của vũ khí
     std::string _weaponName;      // Tên vũ khí
     std::string _category;        // Loại vũ khí
+    std::string _bulletType;      // Loại đạn của vũ khí (eg. đạn nổ, cháy,....)
     std::string _fireSFX;       // Âm thanh khi bắn
     std::string _reloadSFX;     // Âm thanh thay đạn
     std::string _bulletSprite;    // Sprite của đạn

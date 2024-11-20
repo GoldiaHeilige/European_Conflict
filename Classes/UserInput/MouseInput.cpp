@@ -1,5 +1,5 @@
 ﻿#include "MouseInput.h"
-#include "WeaponManager/WeaponCtrl.h"
+#include "WeaponLogic/WeaponCtrl.h"
 
 MouseInput* MouseInput::_instance = nullptr;
 

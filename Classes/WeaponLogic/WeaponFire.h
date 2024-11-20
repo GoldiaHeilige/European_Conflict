@@ -4,6 +4,8 @@
 #include "WeaponStat.h"
 #include "AmmoManager.h"
 #include "cocos2d.h"
+#include "BulletLogic/BulletType.h"
+#include <unordered_map>
 
 class WeaponFire
 {
@@ -13,6 +15,8 @@ public:
 private:
     static cocos2d::Vec2 calculateSpawnPosition(cocos2d::Node* characterNode, const cocos2d::Vec2& direction);
     static float calculateBulletRotation(const cocos2d::Vec2& direction);
+
+    static BulletType* createBulletType(const std::string& typeName);
 };
 
 #endif // __WEAPON_FIRE_H__

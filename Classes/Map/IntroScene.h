@@ -9,7 +9,6 @@
 #include "EntityManager/Enemy.h"
 #include "Map/SpawnObjects.h"
 #include "EntityManager/IDamageable.h"
-#include "WeaponManager/WeaponFire.h"
 
 using namespace cocos2d;
 

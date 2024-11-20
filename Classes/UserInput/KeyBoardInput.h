@@ -2,9 +2,7 @@
 #define __KEYBOARD_INPUT_H__
 
 #include "cocos2d.h"
-#include "WeaponManager/WeaponCtrl.h"
-#include "WeaponManager/AmmoManager.h"
-#include "WeaponManager/WeaponStat.h"
+#include "WeaponLogic/WeaponCtrl.h"
 #include "EntityManager/Character.h"
 
 USING_NS_CC;

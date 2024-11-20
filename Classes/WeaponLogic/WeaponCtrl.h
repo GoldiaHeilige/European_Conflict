@@ -3,10 +3,10 @@
 
 #include "WeaponType.h"
 #include "AmmoManager.h"
+#include "WeaponStat.h"
 #include "WeaponReload.h"
 #include "cocos2d.h"
 #include <unordered_map>
-#include <memory>
 
 class WeaponCtrl {
 public:
@@ -30,9 +30,9 @@ private:
 
     int _currentWeaponID;
     WeaponStat _currentWeaponStat;
-    WeaponType _weaponType; 
-
+    WeaponType _weaponType;
     AmmoManager _ammoManager;
+
     std::unique_ptr<WeaponReload> _weaponReload;
 
     std::unordered_map<int, int> _ammoCache;

@@ -1,6 +1,6 @@
 ﻿#include "Character.h"
-#include "WeaponManager/WeaponCtrl.h"
-#include "Bullet/Bullet.h"
+#include "WeaponLogic/WeaponCtrl.h"
+#include "BulletLogic/Bullet.h"
 
 Character* Character::create(EntityInfo* info, EntityStat* entityStat) {
     auto character = new Character();

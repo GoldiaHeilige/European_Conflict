@@ -13,7 +13,7 @@ void WeaponReload::startReload(cocos2d::Node* scene) {
     _isReloading = true;
     CCLOG("Reloading...");
 
-    _reloadSFXID = AudioManager::getInstance()->playSFX(_weaponStat._reloadSFX);
+    /*_reloadSFXID = AudioManager::getInstance()->playSFX(_weaponStat._reloadSFX);*/
 
     float reloadTime = _weaponStat._reloadTime;
 

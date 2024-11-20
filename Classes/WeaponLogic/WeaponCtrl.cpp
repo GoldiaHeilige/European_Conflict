@@ -1,8 +1,8 @@
 ﻿#include "WeaponCtrl.h"
 #include "WeaponFire.h"
-#include "cocos2d.h"
 
 WeaponCtrl* WeaponCtrl::_instance = nullptr;
+//const int RELOAD_ACTION_TAG = 1001;
 
 WeaponCtrl* WeaponCtrl::getInstance() {
     if (_instance == nullptr) {
@@ -11,9 +11,8 @@ WeaponCtrl* WeaponCtrl::getInstance() {
     return _instance;
 }
 
-WeaponCtrl::WeaponCtrl() : _currentWeaponID(0) {
-    _weaponType.loadWeaponTypesFromJSON("Items/Weapons/weapons.json");
-}
+WeaponCtrl::WeaponCtrl()
+    : _currentWeaponID(0) {}
 
 WeaponCtrl::~WeaponCtrl() {}
 
@@ -33,6 +32,7 @@ void WeaponCtrl::setCurrentWeapon(int weaponID) {
         _weaponReload->cancelReload(scene);
     }
 
+
     if (_ammoManager.getCurrentAmmo() > 0) {
         _ammoCache[_currentWeaponID] = _ammoManager.getCurrentAmmo();
         _totalAmmoCache[_currentWeaponID] = _ammoManager.getTotalAmmo();
@@ -50,6 +50,7 @@ void WeaponCtrl::setCurrentWeapon(int weaponID) {
     }
 
     _ammoManager.setMaxMagCapacity(_currentWeaponStat._weaponMag);
+
     _weaponReload = std::make_unique<WeaponReload>(_ammoManager, _currentWeaponStat);
 
     CCLOG("Weapon switched to ID: %d", weaponID);
