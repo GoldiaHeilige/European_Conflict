@@ -2,6 +2,8 @@
 #define __MAIN_MENU_SCENE_H__
 
 #include "cocos2d.h"
+#include "Interface/HorizontalLayout.h"
+#include "Interface/VerticalLayout.h"
 #include <string>
 
 USING_NS_CC;

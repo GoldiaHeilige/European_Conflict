@@ -120,7 +120,7 @@ bool MainMenuScene::init()
     _background->runAction(menuRepeat);
 
     auto MainMenuVignette = Sprite::create("UI/MainMenuVignette.png");
-    MainMenuVignette->setPosition(visibleSize.width / 4.3, visibleSize.height / 2);
+    MainMenuVignette->setPosition(visibleSize.width / 4.5, visibleSize.height / 2);
     MainMenuVignette->setScale(0.5);
     this->addChild(MainMenuVignette, 1);
 
@@ -199,7 +199,7 @@ void MainMenuScene::onEnter()
 
     // Restart the background music if it is not currently playing
     if (_mainMenuAudio == -1 || AudioEngine::getState(_mainMenuAudio) != AudioEngine::AudioState::PLAYING) {
-        _mainMenuAudio = AudioEngine::play2d("Sounds/Music/Main Menu Music.ogg", true);
+        _mainMenuAudio = AudioEngine::play2d("Sounds/Music/Main Menu Music", true);
     }
 }
 

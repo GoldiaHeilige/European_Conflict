@@ -1,4 +1,10 @@
-#include "EnemyType.h"
+﻿#include "EnemyType.h"
+#include "cocos2d.h"
+#include "json/document.h"
+#include "json/filereadstream.h"
+
+using namespace cocos2d;
+using namespace rapidjson;
 
 EnemyType* EnemyType::_instance = nullptr;
 
@@ -9,20 +15,47 @@ EnemyType* EnemyType::getInstance() {
     return _instance;
 }
 
-void EnemyType::preloadEnemyData() {
-    EnemyData enemy1;
-    enemy1.info._type = "Enemy";
-    enemy1.info._name = "Enemy4_Rifle";
-    enemy1.stat._spd = 10;
-    enemy1.stat._hp = 100;
-    _enemyDataMap["Enemy4_Rifle"] = enemy1;
-   
-    EnemyData enemy2;
-    enemy2.info._type = "Enemy";
-    enemy2.info._name = "Enemy3_Rifle";
-    enemy2.stat._spd = 10;
-    enemy2.stat._hp = 150;
-    _enemyDataMap["Enemy3_Rifle"] = enemy2;
+EnemyType::EnemyType() {
+    loadEnemyDataFromJSON("Entity/Enemy/enemy_data.json");
+}
+
+EnemyType::~EnemyType() {}
+
+void EnemyType::loadEnemyDataFromJSON(const std::string& filePath) {
+
+    std::string fileData = FileUtils::getInstance()->getStringFromFile(filePath);
+    if (fileData.empty()) {
+        CCLOG("Failed to load enemy data from %s", filePath.c_str());
+        return;
+    }
+
+    Document document;
+    document.Parse(fileData.c_str());
+
+    if (document.HasParseError() || !document.IsObject()) {
+        CCLOG("Invalid JSON format in %s", filePath.c_str());
+        return;
+    }
+
+    if (document.HasMember("enemies") && document["enemies"].IsArray()) {
+        const auto& enemies = document["enemies"];
+        for (auto& enemy : enemies.GetArray()) {
+            if (enemy.IsObject()) {
+                EnemyData enemyData;
+                enemyData.info._type = enemy["type"].GetString();
+                enemyData.info._name = enemy["name"].GetString();
+                enemyData.stat._spd = enemy["spd"].GetFloat();
+                enemyData.stat._hp = enemy["hp"].GetFloat();
+                enemyData.stat._armor = enemy["armor"].GetFloat();
+
+                _enemyDataMap[enemyData.info._name] = enemyData;
+                CCLOG("Loaded enemy: %s", enemyData.info._name.c_str());
+            }
+        }
+    }
+    else {
+        CCLOG("No enemies found in %s", filePath.c_str());
+    }
 }
 
 bool EnemyType::getEnemyData(const std::string& enemyName, EntityInfo*& info, EntityStat*& stat) {

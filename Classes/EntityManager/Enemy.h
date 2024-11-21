@@ -6,18 +6,25 @@
 #include <cstdlib>
 #include "Entity.h"
 #include "IDamageable.h"
+#include "EntityStat.h"
 #include "AnimManager/AnimationUtils.h"
+#include "WeaponLogic/WeaponStat.h"
 
 class Enemy : public Entity, public IDamageable
 {
 public:
     static Enemy* create(EntityInfo* info, EntityStat* entityStat);
     virtual bool init(EntityInfo* info, EntityStat* entityStat);
-    void takeDame(int dame) override;
+    void takeDame(float dame) override;
 
+    EntityStat& getEntityStat() { return *_entityStat; }
+    WeaponStat* getWeaponStat() { return &_weaponStat; }
 private:
     void die();
     void update(float dt);
+
+    WeaponStat _weaponStat;
+    EntityStat* _entityStat;
 
     bool _isMoving = false; // Flag to check if the enemy is moving
     float _movementTimer = 0.0f; // Timer to track movement time

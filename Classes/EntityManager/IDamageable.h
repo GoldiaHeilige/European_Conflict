@@ -3,7 +3,7 @@
 
 class IDamageable {
 public:
-	virtual void takeDame(int dame) {}
+	virtual void takeDame(float dame) {}
 };
 
 #endif // !__I_DAMAGEABLE_H__

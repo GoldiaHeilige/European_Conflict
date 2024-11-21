@@ -30,12 +30,10 @@ bool Bullet::init(Entity* entity, const std::string& bulletSprite, BulletType* b
 
     this->addChild(_model);
 
-    // Tạo vật lý cho đạn
     auto body = PhysicsBody::createCircle(_model->getContentSize().width / 3.9);
     body->setContactTestBitmask(1);
     this->setPhysicsBody(body);
 
-    // Lắng nghe va chạm
     auto physicListener = EventListenerPhysicsContact::create();
     physicListener->onContactBegin = CC_CALLBACK_1(Bullet::onContactBegin, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(physicListener, this);
@@ -60,7 +58,6 @@ bool Bullet::onContactBegin(PhysicsContact& contact) {
     auto target = (nodeA == this) ? nodeB : nodeA;
 
     if (bullet && target && _bulletType) {
-        // Gọi logic va chạm của loại đạn, truyền sát thương
         _bulletType->onHit(this, target, _damage);
         this->removeFromParentAndCleanup(true);
     }

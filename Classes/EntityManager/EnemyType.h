@@ -1,4 +1,4 @@
-#ifndef __ENEMY_TYPE_H__
+﻿#ifndef __ENEMY_TYPE_H__
 #define __ENEMY_TYPE_H__
 
 #include <unordered_map>
@@ -8,24 +8,32 @@
 
 class EnemyType {
 public:
+    // Truy cập instance singleton
     static EnemyType* getInstance();
 
-    // Loads predefined enemy configurations
-    void preloadEnemyData();
+    // Tải dữ liệu từ file JSON
+    void loadEnemyDataFromJSON(const std::string& filePath);
 
-    // Retrieves enemy stats and info based on name
+    // Lấy thông tin enemy dựa trên tên
     bool getEnemyData(const std::string& enemyName, EntityInfo*& info, EntityStat*& stat);
 
 private:
-    EnemyType() { preloadEnemyData(); }
+    // Constructor private (singleton)
+    EnemyType();
+
+    // Destructor
+    ~EnemyType();
+
+    // Instance singleton
     static EnemyType* _instance;
 
+    // Cấu trúc lưu dữ liệu kẻ địch
     struct EnemyData {
         EntityInfo info;
         EntityStat stat;
     };
 
-    // Map to store enemy configurations with enemy name as the key
+    // Map để lưu trữ dữ liệu enemy
     std::unordered_map<std::string, EnemyData> _enemyDataMap;
 };
 

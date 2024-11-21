@@ -36,6 +36,10 @@ void WeaponType::initializeWeaponTypes()
     smg1._reloadSFX = "reload_smg.ogg";
     smg1._bulletSprite = "ar1";
     smg1._atk = 20.0;
+    smg1._critChance = 100.0;
+    smg1._critDmg = 50.0;
+    smg1._piercingChance = 100.0;
+    smg1._armorDmg = 30.0;
     smg1._totalAmmoMax = 100;
     smg1._weaponMag = 30;
     smg1._bulletVelocity = 450.0;

@@ -37,13 +37,20 @@ bool Enemy::init(EntityInfo* info, EntityStat* entityStat)
 	return true;
 }
 
-void Enemy::takeDame(int dame)
-{
+void Enemy::takeDame(float dame) {
+	// Kiểm tra nếu có giáp và trừ giáp trước
+	if (_entityStat->_armor > 0) {
+		float armorDmg = std::min(dame, _entityStat->_armor);
+		_entityStat->_armor -= armorDmg;
+		dame -= armorDmg; // Sát thương còn lại sau khi trừ giáp
+	}
+
+	// Sau khi trừ giáp (nếu có), trừ vào HP
 	_entityStat->_hp -= dame;
-	CCLOG("Enemy took %d damage, remaining HP: %f", dame, _entityStat->_hp);
+	CCLOG("Enemy took %.2f damage, remaining HP: %.2f, Armor: %.2f", dame, _entityStat->_hp, _entityStat->_armor);
 
 	if (_entityStat->_hp <= 0) {
-		die(); 
+		die(); // Kẻ địch chết nếu HP <= 0
 	}
 }
 

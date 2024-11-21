@@ -1,0 +1,18 @@
+{
+  "enemies": [
+    {
+      "type": "Enemy",
+      "name": "Enemy4_Rifle",
+      "spd": 10,
+      "hp": 100.0,
+      "armor": 25.0
+    },
+    {
+      "type": "Enemy",
+      "name": "Enemy3_Rifle",
+      "spd": 10,
+      "hp": 125.0,
+      "armor": 50.0
+    }
+  ]
+}

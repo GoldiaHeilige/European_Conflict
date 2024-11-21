@@ -2,6 +2,7 @@
 #include "Menu/SplashScene.h"
 #include "Menu/MainMenuScene.h"
 #include "Map/IntroScene.h"
+#include "Menu/HelloWorldScene.h"
 
 #if USE_AUDIO_ENGINE
 #include "audio/include/AudioEngine.h"
@@ -11,6 +12,7 @@ using namespace cocos2d::experimental;
 USING_NS_CC;
 
 static cocos2d::Size designResolutionSize = cocos2d::Size(1366, 768);
+//static cocos2d::Size designResolutionSize = cocos2d::Size(1366, 768);
 static cocos2d::Size smallResolutionSize = cocos2d::Size(480, 320);
 static cocos2d::Size mediumResolutionSize = cocos2d::Size(1024, 768);
 static cocos2d::Size largeResolutionSize = cocos2d::Size(2048, 1536);
@@ -81,6 +83,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // create a scene. it's an autorelease object
     auto scene = IntroScene::createIntroScene();
     /*auto scene = MainMenuScene::create();*/
+    /*auto scene = HelloWorldScene::create();*/
 
     // run
     director->runWithScene(scene);

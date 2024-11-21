@@ -3,16 +3,18 @@
 
 #include "cocos2d.h"
 #include <string>
+#include "EntityManager/Enemy.h"
+#include "EntityManager/EntityStat.h"
 
 class BulletType {
 public:
     BulletType(const std::string& name);
 
-    virtual void onHit(cocos2d::Node* bullet, cocos2d::Node* target, float damage); // Thêm tham số damage
+    virtual void onHit(cocos2d::Node* bullet, cocos2d::Node* target, float damage);
     const std::string& getName() const { return _name; }
 
 protected:
-    std::string _name;  // Tên loại đạn
+    std::string _name;  
 };
 
 class KineticBulletType : public BulletType {

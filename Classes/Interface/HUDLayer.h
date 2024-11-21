@@ -2,7 +2,7 @@
 #define __HUD_LAYER_H__
 
 #include "cocos2d.h"
-#include "WeaponManager/WeaponCtrl.h"  
+#include "WeaponLogic/WeaponCtrl.h"  
 
 USING_NS_CC;
 
