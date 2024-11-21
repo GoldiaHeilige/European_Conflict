@@ -8,8 +8,7 @@ WeaponType::WeaponType()
 }
 
 void WeaponType::initializeWeaponTypes() {
-    // Load JSON from a file (example file path)
-    std::string jsonFilePath = "weapon_data.json";
+    std::string jsonFilePath = "Items/Weapons/weapon_data.json";
     cocos2d::FileUtils* fileUtils = cocos2d::FileUtils::getInstance();
     std::string jsonData = fileUtils->getStringFromFile(jsonFilePath);
 

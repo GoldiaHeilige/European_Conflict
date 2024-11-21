@@ -11,22 +11,18 @@ void KineticBulletType::onHit(cocos2d::Node* bullet, cocos2d::Node* target, floa
     if (auto damageable = dynamic_cast<IDamageable*>(target)) {
         float finalDamage = damage;
 
-        // Kiểm tra xuyên giáp
         if (auto enemy = dynamic_cast<Enemy*>(target)) {
-            // Lấy thông tin stat và weapon stat của enemy
-            auto entityStat = enemy->getEntityStat();  // Đảm bảo lấy đúng EntityStat
-            auto weaponStat = enemy->getWeaponStat();  // Đảm bảo lấy đúng WeaponStat
+            auto entityStat = enemy->getEntityStat(); 
+            auto weaponStat = enemy->getWeaponStat(); 
 
-            // Kiểm tra nếu Enemy có giáp
             if (entityStat._armor > 0) {
-                // Xác định tỷ lệ xuyên giáp
-                if (rand() % 100 < std::min(weaponStat->_piercingChance, 100.0f)) {  // Giới hạn piercingChance <= 100
-                    finalDamage = damage;  // Xuyên giáp thành công, dùng sát thương gốc
+                if (rand() % 100 < std::min(weaponStat->_piercingChance, 100.0f)) { 
+                    finalDamage = damage;  
                     CCLOG("Armor piercing successful: Damage remains at original: %.2f", finalDamage);
                 }
                 else {
                     finalDamage -= weaponStat->_armorDmg;
-                    finalDamage = std::max(finalDamage, 0.0f);  // Đảm bảo sát thương không bị âm
+                    finalDamage = std::max(finalDamage, 0.0f);  
                     CCLOG("Hit armor: Final damage after armor reduction: %.2f", finalDamage);
                 }
             }
@@ -34,18 +30,17 @@ void KineticBulletType::onHit(cocos2d::Node* bullet, cocos2d::Node* target, floa
 
         // Kiểm tra chí mạng (Crit)
         if (auto enemy = dynamic_cast<Enemy*>(target)) {
-            auto weaponStat = enemy->getWeaponStat();  // Lấy lại weaponStat từ enemy
+            auto weaponStat = enemy->getWeaponStat();  
             if (rand() % 100 < weaponStat->_critChance) {
                 finalDamage *= weaponStat->_critDmg;
-                CCLOG("Critical hit! Final damage: %.2f", finalDamage); // Chí mạng thành công
+                CCLOG("Critical hit! Final damage: %.2f", finalDamage); 
             }
             else {
-                CCLOG("No critical hit. Damage: %.2f", finalDamage); // Không có chí mạng
+                CCLOG("No critical hit. Damage: %.2f", finalDamage); 
             }
         }
 
-        // Gây sát thương lên Entity
         damageable->takeDame(finalDamage);
-        CCLOG("Final damage dealt: %.2f", finalDamage);  // Gây sát thương
+        CCLOG("Final damage dealt: %.2f", finalDamage);  
     }
 }

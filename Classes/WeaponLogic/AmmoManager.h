@@ -11,7 +11,7 @@ public:
 
     void initializeAmmo(const WeaponStat& weaponStat);
     void updateAmmo(int ammoUsed);
-    int reload(int maxReload); // Returns amount reloaded
+    int reload(int maxReload); 
 
     int getCurrentAmmo() const { return _currentAmmo; }
     int getTotalAmmo() const { return _currentTotalAmmo; }
