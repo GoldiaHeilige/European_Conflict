@@ -2,7 +2,6 @@
 #include "WeaponFire.h"
 
 WeaponCtrl* WeaponCtrl::_instance = nullptr;
-//const int RELOAD_ACTION_TAG = 1001;
 
 WeaponCtrl* WeaponCtrl::getInstance() {
     if (_instance == nullptr) {
@@ -12,7 +11,7 @@ WeaponCtrl* WeaponCtrl::getInstance() {
 }
 
 WeaponCtrl::WeaponCtrl()
-    : _currentWeaponID(0) {}
+    : _currentWeaponID(1) {}
 
 WeaponCtrl::~WeaponCtrl() {}
 
@@ -22,6 +21,11 @@ WeaponStat WeaponCtrl::getCurrentWeaponStat() const {
 
 void WeaponCtrl::setCurrentWeapon(int weaponID) {
     auto scene = cocos2d::Director::getInstance()->getRunningScene();
+
+    if (_weaponType.getWeaponStatByID(weaponID)._weaponID == 0) {
+        CCLOG("Invalid Weapon ID: %d", weaponID);
+        return;
+    }
 
     if (_weaponReload && _weaponReload->isReloading()) {
         if (_currentWeaponID == weaponID) {

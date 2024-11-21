@@ -30,7 +30,7 @@ private:
 
     int _currentWeaponID;
     WeaponStat _currentWeaponStat;
-    WeaponType _weaponType;
+    WeaponType _weaponType;  
     AmmoManager _ammoManager;
 
     std::unique_ptr<WeaponReload> _weaponReload;

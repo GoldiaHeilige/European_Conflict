@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="100" height="13" tilewidth="64" tileheight="64" infinite="0" nextlayerid="22" nextobjectid="78">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="100" height="13" tilewidth="64" tileheight="64" infinite="0" nextlayerid="23" nextobjectid="78">
  <tileset firstgid="1" source="Tilesets/Tileset.tsx"/>
  <tileset firstgid="353" source="Building/building_industrial/industrial_buildings_normal.tsx"/>
  <tileset firstgid="359" source="Vehicle/Civil Vehicle/Civil Normal/civil_vehicle_normal.tsx"/>
@@ -41,6 +41,7 @@
    <point/>
   </object>
  </objectgroup>
+ <objectgroup id="22" name="Item Spawn"/>
  <objectgroup id="5" name="Car Normal">
   <object id="19" name="fire engine" type="car" gid="500" x="408.12" y="358.465" width="128" height="128" rotation="110.259">
    <properties>

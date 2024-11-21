@@ -1,0 +1,40 @@
+[
+  {
+    "weaponID": 1,
+    "weaponName": "Glock 17",
+    "category": "Handgun",
+    "bulletType": "Kinetic",
+    "fireSFX": "Revolver1.ogg",
+    "reloadSFX": "reload_pistol.ogg",
+    "bulletSprite": "pistol1",
+    "atk": 10.0,
+    "critChance": 20.0,
+    "critDmg": 20.0,
+    "piercingChance": 20,
+    "armorDmg": 20,
+    "totalAmmoMax": 50,
+    "weaponMag": 12,
+    "bulletVelocity": 400.0,
+    "ammoType": 9,
+    "reloadTime": 2.5
+  },
+  {
+    "weaponID": 2,
+    "weaponName": "Mp9",
+    "category": "Submachine Gun",
+    "bulletType": "Kinetic",
+    "fireSFX": "SMGsingleShot1.ogg",
+    "reloadSFX": "reload_smg.ogg",
+    "bulletSprite": "ar1",
+    "atk": 20.0,
+    "critChance": 100.0,
+    "critDmg": 50.0,
+    "piercingChance": 100.0,
+    "armorDmg": 30.0,
+    "totalAmmoMax": 100,
+    "weaponMag": 30,
+    "bulletVelocity": 450.0,
+    "ammoType": 9,
+    "reloadTime": 3.0
+  }
+]

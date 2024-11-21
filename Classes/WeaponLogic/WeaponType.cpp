@@ -1,87 +1,66 @@
 ﻿#include "WeaponType.h"
+#include "cocos2d.h"
+#include "json/document.h"
 
 WeaponType::WeaponType()
 {
     initializeWeaponTypes();
 }
 
-void WeaponType::initializeWeaponTypes()
-{
-    WeaponStat pistol1;
-    pistol1._weaponID = 001;
-    pistol1._weaponName = "Glock 17";
-    pistol1._category = "Handgun";
-    pistol1._bulletType = "Kinetic";
-    pistol1._fireSFX = "Revolver1.ogg";
-    pistol1._reloadSFX = "reload_pistol.ogg";
-    pistol1._bulletSprite = "pistol1";
-    pistol1._gunChamber = "reload_pistolChamber.ogg";
-    pistol1._atk = 10.0;
-    pistol1._critChance = 20.0;
-    pistol1._critDmg = 20.0;
-    pistol1._piercingChance = 20;
-    pistol1._armorDmg = 20;
-    pistol1._totalAmmoMax = 50;
-    pistol1._weaponMag = 12;
-    pistol1._bulletVelocity = 400.0;
-    pistol1._ammoType = 9;
-    pistol1._reloadTime = 2.5;
+void WeaponType::initializeWeaponTypes() {
+    // Load JSON from a file (example file path)
+    std::string jsonFilePath = "weapon_data.json";
+    cocos2d::FileUtils* fileUtils = cocos2d::FileUtils::getInstance();
+    std::string jsonData = fileUtils->getStringFromFile(jsonFilePath);
 
-    WeaponStat smg1;
-    smg1._weaponID = 002;
-    smg1._weaponName = "Mp9";
-    smg1._category = "Submachine Gun";
-    smg1._bulletType = "Kinetic";
-    smg1._fireSFX = "SMGsingleShot1.ogg";
-    smg1._reloadSFX = "reload_smg.ogg";
-    smg1._bulletSprite = "ar1";
-    smg1._atk = 20.0;
-    smg1._critChance = 100.0;
-    smg1._critDmg = 50.0;
-    smg1._piercingChance = 100.0;
-    smg1._armorDmg = 30.0;
-    smg1._totalAmmoMax = 100;
-    smg1._weaponMag = 30;
-    smg1._bulletVelocity = 450.0;
-    smg1._ammoType = 45;
-    smg1._reloadTime = 3.0;
+    if (jsonData.empty()) {
+        CCLOG("Error: JSON file could not be loaded!");
+        return;
+    }
 
-    WeaponStat ar1;
-    ar1._weaponID = 003;
-    ar1._weaponName = "M4A1";
-    ar1._category = "Assault Rifle";
-    ar1._fireSFX = "Revolver1.ogg";
-    ar1._bulletSprite = "m4a1bullet";
-    ar1._atk = 30;
-    ar1._totalAmmoMax = 180;
-    ar1._weaponMag = 30;
-    ar1._ammoType = 5.56;
+    rapidjson::Document doc;
+    doc.Parse<0>(jsonData.c_str());
 
-    WeaponStat launcher1;
-    launcher1._weaponID = 004;
-    launcher1._weaponName = "RPG-7";
-    launcher1._category = "Anti-Tank Launcher";
-    /*launcher1._bulletType = "High Explosive";*/
-    launcher1._bulletType = "Kinetic";
-    launcher1._fireSFX = "fire_rocket.ogg";
-    launcher1._reloadSFX = "reload_RPG.ogg";
-    launcher1._bulletSprite = "launcher1";
-    launcher1._gunChamber = "reload_RPGLoad.ogg";
-    launcher1._atk = 150.0;
-    launcher1._critChance = 80.0;
-    launcher1._critDmg = 300.0;
-    launcher1._piercingChance = 100;
-    launcher1._armorDmg = 200;
-    launcher1._totalAmmoMax = 10;
-    launcher1._weaponMag = 1;
-    launcher1._bulletVelocity = 350.0;
-    launcher1._ammoType = 40;
-    launcher1._reloadTime = 4.5;
+    if (doc.HasParseError()) {
+        CCLOG("Error: JSON parse error at offset %u", doc.GetErrorOffset());
+        return;
+    }
 
-    _weaponStats[pistol1._weaponID] = pistol1;
-    _weaponStats[smg1._weaponID] = smg1;
-    _weaponStats[ar1._weaponID] = ar1;
-    _weaponStats[launcher1._weaponID] = launcher1;
+    if (doc.IsArray()) {
+        for (rapidjson::SizeType i = 0; i < doc.Size(); i++) {
+            const rapidjson::Value& weapon = doc[i];
+            if (weapon.HasMember("weaponID") && weapon["weaponID"].IsInt()) {
+                int weaponID = weapon["weaponID"].GetInt();
+                WeaponStat weaponStat;
+
+                weaponStat._weaponID = weaponID;
+                weaponStat._weaponName = weapon["weaponName"].GetString();
+                weaponStat._category = weapon["category"].GetString();
+                weaponStat._bulletType = weapon["bulletType"].GetString();
+                weaponStat._fireSFX = weapon["fireSFX"].GetString();
+                weaponStat._reloadSFX = weapon["reloadSFX"].GetString();
+                weaponStat._bulletSprite = weapon["bulletSprite"].GetString();
+                weaponStat._atk = weapon["atk"].GetDouble();
+                weaponStat._critChance = weapon["critChance"].GetDouble();
+                weaponStat._critDmg = weapon["critDmg"].GetDouble();
+                weaponStat._piercingChance = weapon["piercingChance"].GetDouble();
+                weaponStat._armorDmg = weapon["armorDmg"].GetDouble();
+                weaponStat._totalAmmoMax = weapon["totalAmmoMax"].GetInt();
+                weaponStat._weaponMag = weapon["weaponMag"].GetInt();
+                weaponStat._bulletVelocity = weapon["bulletVelocity"].GetDouble();
+                weaponStat._ammoType = weapon["ammoType"].GetInt();
+                weaponStat._reloadTime = weapon["reloadTime"].GetDouble();
+
+                _weaponStats[weaponID] = weaponStat;
+            }
+            else {
+                CCLOG("Warning: Missing weaponID in weapon data entry.");
+            }
+        }
+    }
+    else {
+        CCLOG("Error: Expected JSON array for weapon data.");
+    }
 }
 
 WeaponStat WeaponType::getWeaponStatByID(int weaponID)
