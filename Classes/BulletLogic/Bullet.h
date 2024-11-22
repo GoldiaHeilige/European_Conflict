@@ -2,25 +2,26 @@
 #define __BULLET_H__
 
 #include "cocos2d.h"
-#include "BulletType.h"
-#include "EntityManager/Enemy.h"
+#include "EntityManager/Entity.h"
+#include "EntityManager/IDamageable.h"
 
 using namespace cocos2d;
 
-class Bullet : public Node {
+class Bullet : public Node
+{
 public:
-    static Bullet* create(Entity* entity, const std::string& bulletSprite, BulletType* bulletType, float damage);
-    bool init(Entity* entity, const std::string& bulletSprite, BulletType* bulletType, float damage);
+    static Bullet* create(Entity* entity, std::string bulletSprite);
 
-    void fire(const Vec2& direction, float velocity);
+    virtual bool init(Entity* entity, std::string bulletSprite);
+    void fire(Vec2 direction, float velocity);
 
-private:
-    bool onContactBegin(PhysicsContact& contact);
-
-    BulletType* _bulletType;
+protected:
     Sprite* _model;
     Entity* _entity;
-    float _damage;
+
+    bool onContactBegin(PhysicsContact& contact);
+
+    virtual void onHit(IDamageable* target);
 };
 
 #endif // __BULLET_H__

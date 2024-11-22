@@ -1,9 +1,11 @@
 ﻿#include "Bullet.h"
-#include <typeinfo>  
+#include "EntityManager/IDamageable.h"
+#include <typeinfo>
 
-Bullet* Bullet::create(Entity* entity, const std::string& bulletSprite, BulletType* bulletType, float damage) {
-    auto newObj = new Bullet();
-    if (newObj && newObj->init(entity, bulletSprite, bulletType, damage)) {
+Bullet* Bullet::create(Entity* entity, std::string bulletSprite)
+{
+    Bullet* newObj = new Bullet();
+    if (newObj != nullptr && newObj->init(entity, bulletSprite)) {
         newObj->autorelease();
         return newObj;
     }
@@ -11,14 +13,13 @@ Bullet* Bullet::create(Entity* entity, const std::string& bulletSprite, BulletTy
     return nullptr;
 }
 
-bool Bullet::init(Entity* entity, const std::string& bulletSprite, BulletType* bulletType, float damage) {
+bool Bullet::init(Entity* entity, std::string bulletSprite)
+{
     if (!Node::init()) {
         return false;
     }
 
     _entity = entity;
-    _bulletType = bulletType;
-    _damage = damage;
 
     std::string bulletSpritePath = "Bullet/" + bulletSprite + ".png";
     _model = Sprite::create(bulletSpritePath);
@@ -27,8 +28,6 @@ bool Bullet::init(Entity* entity, const std::string& bulletSprite, BulletType* b
         CCLOG("Error: Could not load bullet sprite from path: %s", bulletSpritePath.c_str());
         return false;
     }
-
-    this->addChild(_model);
 
     auto body = PhysicsBody::createCircle(_model->getContentSize().width / 3.9);
     body->setContactTestBitmask(1);
@@ -40,25 +39,34 @@ bool Bullet::init(Entity* entity, const std::string& bulletSprite, BulletType* b
 
     this->scheduleOnce([this](float) {
         this->removeFromParentAndCleanup(true);
-        }, 15.0f, "remove_bullet_after_15_seconds");
+        }, 10.0f, "remove_bullet_after_10_seconds");
 
+    this->addChild(_model);
     return true;
 }
 
-void Bullet::fire(const Vec2& direction, float velocity) {
+void Bullet::fire(Vec2 direction, float velocity)
+{
     getPhysicsBody()->setVelocity(direction * velocity);
 }
 
-bool Bullet::onContactBegin(PhysicsContact& contact) {
+bool Bullet::onContactBegin(PhysicsContact& contact)
+{
     auto nodeA = contact.getShapeA()->getBody()->getNode();
     auto nodeB = contact.getShapeB()->getBody()->getNode();
-
     auto bullet = (nodeA == this) ? nodeA : (nodeB == this) ? nodeB : nullptr;
     auto target = (nodeA == this) ? nodeB : nodeA;
 
-    if (bullet && target && _bulletType) {
-        _bulletType->onHit(this, target, _damage);
+    if (bullet && target) {
+        CCLOG("Bullet collided with target: %s", typeid(*target).name());
+
+        if (auto damageable = dynamic_cast<IDamageable*>(target)) {
+            onHit(damageable);
+        }
+
         this->removeFromParentAndCleanup(true);
     }
     return true;
 }
+
+void Bullet::onHit(IDamageable* target) {}
