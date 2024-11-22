@@ -1,7 +1,17 @@
 ﻿#include "BulletManager.h"
 #include "WeaponLogic/WeaponCtrl.h"
 #include "WeaponLogic/WeaponType.h"
-#include "BulletTypes/KineticProjectile.h"
+
+BulletManager* BulletManager::_instance = nullptr;
+
+BulletManager* BulletManager::getInstance()
+{
+    if (_instance == nullptr) {
+        _instance = new BulletManager();
+        _instance->retain(); 
+    }
+    return _instance;
+}
 
 BulletManager::BulletManager()
 {
@@ -16,16 +26,14 @@ BulletManager::~BulletManager()
     _bullets.clear();
 }
 
-Bullet* BulletManager::createBullet(Entity* entity)
+Bullet* BulletManager::createBullet(Entity* entity, const std::string& bulletSprite)
 {
     std::string bulletType = WeaponCtrl::getInstance()->getCurrentWeaponStat()._bulletType;
-
     if (bulletType == "Kinetic") {
-        return KineticProjectile::create(entity);
+        return KineticProjectile::create(entity, bulletSprite);
     }
-    // Add more bullet types as needed (e.g., Explosive)
 
-    return nullptr; // Return nullptr if no matching bullet type is found
+    return nullptr;
 }
 
 void BulletManager::addBullet(Bullet* bullet)
@@ -40,6 +48,6 @@ void BulletManager::update(float dt)
 {
     // Update bullets here, if necessary (e.g., movement, checking if out of bounds, etc.)
     for (auto& bullet : _bullets) {
-        // You can add additional logic for bullet management here
+        // Add additional logic for bullet management here
     }
 }

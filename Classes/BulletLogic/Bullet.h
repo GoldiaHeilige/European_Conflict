@@ -12,7 +12,7 @@ class Bullet : public Node
 public:
     static Bullet* create(Entity* entity, std::string bulletSprite);
 
-    virtual bool init(Entity* entity, std::string bulletSprite);
+    virtual bool init(Entity* entity, const std::string& bulletSprite);
     void fire(Vec2 direction, float velocity);
 
 protected:

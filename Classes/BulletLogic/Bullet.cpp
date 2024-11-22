@@ -13,7 +13,7 @@ Bullet* Bullet::create(Entity* entity, std::string bulletSprite)
     return nullptr;
 }
 
-bool Bullet::init(Entity* entity, std::string bulletSprite)
+bool Bullet::init(Entity* entity, const std::string& bulletSprite)
 {
     if (!Node::init()) {
         return false;
@@ -45,12 +45,12 @@ bool Bullet::init(Entity* entity, std::string bulletSprite)
     return true;
 }
 
-void Bullet::fire(Vec2 direction, float velocity)
+void Bullet::fire(cocos2d::Vec2 direction, float velocity)
 {
     getPhysicsBody()->setVelocity(direction * velocity);
 }
 
-bool Bullet::onContactBegin(PhysicsContact& contact)
+bool Bullet::onContactBegin(cocos2d::PhysicsContact& contact)
 {
     auto nodeA = contact.getShapeA()->getBody()->getNode();
     auto nodeB = contact.getShapeB()->getBody()->getNode();
@@ -58,15 +58,21 @@ bool Bullet::onContactBegin(PhysicsContact& contact)
     auto target = (nodeA == this) ? nodeB : nodeA;
 
     if (bullet && target) {
-        CCLOG("Bullet collided with target: %s", typeid(*target).name());
 
         if (auto damageable = dynamic_cast<IDamageable*>(target)) {
-            onHit(damageable);
+            CCLOG("Target is damageable!");
+            onHit(damageable); // Call onHit, which can be overridden by subclasses
+        }
+        else {
+            CCLOG("Target is not damageable.");
         }
 
-        this->removeFromParentAndCleanup(true);
+        this->removeFromParentAndCleanup(true); 
     }
     return true;
 }
 
-void Bullet::onHit(IDamageable* target) {}
+void Bullet::onHit(IDamageable* target) {
+    // Default behavior does nothing, but can be overridden by subclasses
+    CCLOG("Default onHit: Bullet hit target, but no effect in base class.");
+}

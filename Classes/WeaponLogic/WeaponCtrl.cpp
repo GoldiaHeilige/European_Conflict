@@ -36,7 +36,6 @@ void WeaponCtrl::setCurrentWeapon(int weaponID) {
         _weaponReload->cancelReload(scene);
     }
 
-
     if (_ammoManager.getCurrentAmmo() > 0) {
         _ammoCache[_currentWeaponID] = _ammoManager.getCurrentAmmo();
         _totalAmmoCache[_currentWeaponID] = _ammoManager.getTotalAmmo();

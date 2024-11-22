@@ -87,7 +87,7 @@ void KeyboardInput::onKeyPressed(EventKeyboard::KeyCode key, Event* ev) {
         WeaponCtrl::getInstance()->reload(scene);
         break;
     case EventKeyboard::KeyCode::KEY_1:
-        WeaponCtrl::getInstance()->setCurrentWeapon(1);
+        WeaponCtrl::getInstance()->setCurrentWeapon(3);
         break;
     case EventKeyboard::KeyCode::KEY_2:
         WeaponCtrl::getInstance()->setCurrentWeapon(2);

@@ -8,13 +8,12 @@
 class KineticProjectile : public Bullet
 {
 public:
-    static KineticProjectile* create(Entity* entity);
+    static KineticProjectile* create(Entity* entity, const std::string& bulletSprite);
 
-    // Handle what happens when the bullet hits something
-    void onHit(PhysicsContact& contact);
+    void onHit(IDamageable* target) override;
 
 private:
-    int _dmg; // Damage for kinetic bullet
+    float _dmg;
 };
 
 #endif // __KINETIC_PROJECTILE_H__

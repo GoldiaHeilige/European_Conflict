@@ -2,10 +2,10 @@
 #include "WeaponLogic/WeaponCtrl.h"
 #include "EntityManager/Enemy.h"
 
-KineticProjectile* KineticProjectile::create(Entity* entity)
+KineticProjectile* KineticProjectile::create(Entity* entity, const std::string& bulletSprite)
 {
     KineticProjectile* newProjectile = new KineticProjectile();
-    if (newProjectile && newProjectile->init(entity, "")) {
+    if (newProjectile && newProjectile->init(entity, bulletSprite)) {
         newProjectile->_dmg = WeaponCtrl::getInstance()->getCurrentWeaponStat()._atk;
         newProjectile->autorelease();
         return newProjectile;
@@ -15,18 +15,10 @@ KineticProjectile* KineticProjectile::create(Entity* entity)
     return nullptr;
 }
 
-void KineticProjectile::onHit(PhysicsContact& contact)
+void KineticProjectile::onHit(IDamageable* target)
 {
-    auto nodeA = contact.getShapeA()->getBody()->getNode();
-    auto nodeB = contact.getShapeB()->getBody()->getNode();
-    auto bullet = (nodeA == this) ? nodeA : (nodeB == this) ? nodeB : nullptr;
-    auto target = (nodeA == this) ? nodeB : nodeA;
-
-    if (bullet && target) {
-        if (auto damageable = dynamic_cast<IDamageable*>(target)) {
-            damageable->takeDame(_dmg);
-        }
-
-        this->removeFromParentAndCleanup(true);
+    CCLOG("Kinetic projectile hit the target! Damage: %f", _dmg);
+    if (target) {
+        target->takeDame(_dmg);  
     }
 }

@@ -40,7 +40,7 @@ bool Enemy::init(EntityInfo* info, EntityStat* entityStat)
 void Enemy::takeDame(float dame)
 {
 	_entityStat->_hp -= dame;
-	CCLOG("Enemy took %d damage, remaining HP: %f", dame, _entityStat->_hp);
+	CCLOG("Current Enemy HP: %f", _entityStat->_hp);
 
 	if (_entityStat->_hp <= 0) {
 		die();
