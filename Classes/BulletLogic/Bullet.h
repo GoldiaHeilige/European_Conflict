@@ -19,8 +19,8 @@ private:
 
     BulletType* _bulletType;
     Sprite* _model;
-    Entity* _entity;         
-    float _damage;          
+    Entity* _entity;
+    float _damage;
 };
 
 #endif // __BULLET_H__

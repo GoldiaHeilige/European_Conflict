@@ -106,7 +106,7 @@ bool MainMenuScene::init()
     *
     **********/
 
-    _background = Sprite::create("Map/LocationPortraits/War.png");
+    _background = Sprite::create("Map/LocationPortraits/MainMenu.png");
     _background->setPosition(visibleSize.width / 1.5, visibleSize.height / 2);
     _background->setContentSize(visibleSize);
     this->addChild(_background, 0);

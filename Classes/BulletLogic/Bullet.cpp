@@ -38,10 +38,9 @@ bool Bullet::init(Entity* entity, const std::string& bulletSprite, BulletType* b
     physicListener->onContactBegin = CC_CALLBACK_1(Bullet::onContactBegin, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(physicListener, this);
 
-    // Xóa đạn sau 10 giây
     this->scheduleOnce([this](float) {
         this->removeFromParentAndCleanup(true);
-        }, 10.0f, "remove_bullet_after_10_seconds");
+        }, 15.0f, "remove_bullet_after_15_seconds");
 
     return true;
 }

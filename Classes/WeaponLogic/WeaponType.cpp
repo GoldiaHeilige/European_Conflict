@@ -47,7 +47,7 @@ void WeaponType::initializeWeaponTypes() {
                 weaponStat._totalAmmoMax = weapon["totalAmmoMax"].GetInt();
                 weaponStat._weaponMag = weapon["weaponMag"].GetInt();
                 weaponStat._bulletVelocity = weapon["bulletVelocity"].GetDouble();
-                weaponStat._ammoType = weapon["ammoType"].GetInt();
+                weaponStat._ammoType = weapon["ammoType"].GetFloat();
                 weaponStat._reloadTime = weapon["reloadTime"].GetDouble();
 
                 _weaponStats[weaponID] = weaponStat;

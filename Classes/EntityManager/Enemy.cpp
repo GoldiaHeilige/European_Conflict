@@ -37,15 +37,10 @@ bool Enemy::init(EntityInfo* info, EntityStat* entityStat)
 	return true;
 }
 
-void Enemy::takeDame(float dame) {
-	if (_entityStat->_armor > 0) {
-		float armorDmg = std::min(dame, _entityStat->_armor);
-		_entityStat->_armor -= armorDmg;
-		dame -= armorDmg; 
-	}
-
+void Enemy::takeDame(float dame)
+{
 	_entityStat->_hp -= dame;
-	CCLOG("Enemy took %.2f damage, remaining HP: %.2f, Armor: %.2f", dame, _entityStat->_hp, _entityStat->_armor);
+	CCLOG("Enemy took %d damage, remaining HP: %f", dame, _entityStat->_hp);
 
 	if (_entityStat->_hp <= 0) {
 		die();
@@ -53,7 +48,7 @@ void Enemy::takeDame(float dame) {
 }
 
 void Enemy::die()
-{ 
+{
 	CCLOG("Enemy has died!");
 	if (this->getPhysicsBody()) {
 		this->removeComponent(this->getPhysicsBody());
@@ -77,38 +72,4 @@ void Enemy::die()
 		nullptr
 	);
 	deathSprite->runAction(sequence);
-}
-
-void Enemy::update(float dt)
-{
-	if (!_isMoving) {
-		_movementTimer += dt;
-		if (_movementTimer >= _nextMovementTime) {
-			_movementTimer = 0.0f;
-			_nextMovementTime = (rand() % 6 + 5); 
-
-			_targetDirection = Vec2(cos(rand() % 360 * M_PI / 180.0f), sin(rand() % 360 * M_PI / 180.0f));
-
-			float moveDistance = rand() % 101 + 100;
-			_targetPosition = getPosition() + _targetDirection * moveDistance;
-
-			float angle = std::atan2(_targetDirection.y, _targetDirection.x) * 180 / M_PI;
-			setRotation(angle);
-
-			_isMoving = true;
-		}
-	}
-	else {
-		float moveSpeed = _entityStat->_spd * dt;
-		Vec2 direction = _targetPosition - getPosition();
-
-		if (direction.length() <= moveSpeed) {
-			setPosition(_targetPosition);
-			_isMoving = false;
-		}
-		else {
-			direction.normalize();
-			setPosition(getPosition() + direction * moveSpeed);
-		}
-	}
 }
