@@ -29,6 +29,7 @@ bool KeyboardInput::init() {
     this->addKey(EventKeyboard::KeyCode::KEY_R);
     this->addKey(EventKeyboard::KeyCode::KEY_1);
     this->addKey(EventKeyboard::KeyCode::KEY_2);
+    this->addKey(EventKeyboard::KeyCode::KEY_3);
 
     // event keyboard
     auto listener = EventListenerKeyboard::create();
@@ -87,10 +88,13 @@ void KeyboardInput::onKeyPressed(EventKeyboard::KeyCode key, Event* ev) {
         WeaponCtrl::getInstance()->reload(scene);
         break;
     case EventKeyboard::KeyCode::KEY_1:
-        WeaponCtrl::getInstance()->setCurrentWeapon(3);
+        WeaponCtrl::getInstance()->setCurrentWeapon(1);
         break;
     case EventKeyboard::KeyCode::KEY_2:
         WeaponCtrl::getInstance()->setCurrentWeapon(2);
+        break;
+    case EventKeyboard::KeyCode::KEY_3:
+        WeaponCtrl::getInstance()->setCurrentWeapon(3);
         break;
     default:
         break;

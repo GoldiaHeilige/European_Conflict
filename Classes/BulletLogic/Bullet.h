@@ -22,6 +22,7 @@ protected:
     bool onContactBegin(PhysicsContact& contact);
 
     virtual void onHit(IDamageable* target);
+    virtual void onHitNonDamageable();
 };
 
 #endif // __BULLET_H__

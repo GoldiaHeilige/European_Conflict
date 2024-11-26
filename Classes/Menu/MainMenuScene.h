@@ -1,28 +1,26 @@
-#ifndef __MAIN_MENU_SCENE_H__
+﻿#ifndef __MAIN_MENU_SCENE_H__
 #define __MAIN_MENU_SCENE_H__
 
 #include "cocos2d.h"
-#include "Interface/HorizontalLayout.h"
-#include "Interface/VerticalLayout.h"
-#include <string>
+#include "GameData/ResourcesManager.h" 
+#include "audio/include/AudioEngine.h"
 
-USING_NS_CC;
-
-class MainMenuScene : public Scene
+class MainMenuScene : public cocos2d::Scene
 {
 public:
     static MainMenuScene* create();
+    virtual bool init() override;
+    virtual void onEnter() override;
+    virtual void onExit() override;
 
-    virtual bool init();
-private:
-    Sprite* _background;
-
-    void switchToGameScene(Ref* sender);
-    void onExit();
-    void onEnter();
-    void menuCloseCallback(cocos2d::Ref* pSender);
+    void switchToGameScene(Ref* pSender);
+    void menuCloseCallback(Ref* pSender);
     void showNameInputOverlay();
     void showDifficultyInfo(Ref* pSender);
+
+private:
+    cocos2d::Sprite* _background;
+    void preloadResources();
 };
 
 #endif // __MAIN_MENU_SCENE_H__

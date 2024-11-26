@@ -20,9 +20,16 @@ void AmmoManager::updateAmmo(int ammoUsed)
 
 int AmmoManager::reload(int maxReload)
 {
+    int ammoNeeded = _maxMagCapacity - _currentAmmo;
+    if (ammoNeeded <= 0) {
+        CCLOG("Magazine is already full.");
+        return 0;
+    }
+
     int reloadAmount = std::min(_currentTotalAmmo, maxReload);
     _currentAmmo += reloadAmount;
     _currentTotalAmmo -= reloadAmount;
+
     CCLOG("Weapon reloaded: New Ammo = %d, Remaining Total Ammo = %d", _currentAmmo, _currentTotalAmmo);
     return reloadAmount;
 }

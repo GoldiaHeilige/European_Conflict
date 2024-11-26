@@ -5,12 +5,6 @@
 #include <cmath>
 #include <cstdlib>
 #include "Entity.h"
-#define __ENEMY_H__
-
-#include <random>
-#include <cmath>
-#include <cstdlib>
-#include "Entity.h"
 #include "IDamageable.h"
 #include "AnimManager/AnimationUtils.h"
 
@@ -21,8 +15,9 @@ public:
     virtual bool init(EntityInfo* info, EntityStat* entityStat);
     void takeDame(float dame) override;
 
+    ~Enemy();
 private:
-    void die();
+    void die(); 
 };
 
 #endif // !__ENEMY_H__

@@ -17,9 +17,9 @@ bool IntroScene::init()
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
     _physicsWorld->setGravity(Vec2::ZERO);
-    /*_physicsWorld->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);*/
+    _physicsWorld->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 
-    _map = TMXTiledMap::create("Chapter_Intro.tmx");
+    _map = TMXTiledMap::create("Map/Tutorial_Map.tmx");
     this->addChild(_map);
 
     auto charInfo = new EntityInfo();
@@ -51,11 +51,12 @@ bool IntroScene::init()
 
     // Spawn Objects
     SpawnObjects spawnObjects(this);
-    spawnObjects.spawnCarsFromTiled(_map);
-    spawnObjects.spawn_Building_Industrial_Normal(_map);
-    spawnObjects.spawn_Building_Industrial_Broken(_map);
-    spawnObjects.spawn_Industrial_Elements_Broken(_map);
-    spawnObjects.spawnFiresFromTiled(_map);
+    //spawnObjects.spawn_Civil_Normal_Cars_1(_map);
+    //spawnObjects.spawn_Civil_Normal_Cars_2(_map);
+    //spawnObjects.spawn_Building_Industrial_Normal(_map);
+    //spawnObjects.spawn_Building_Industrial_Broken(_map);
+    //spawnObjects.spawn_Industrial_Elements_Broken(_map);
+    //spawnObjects.spawnFiresFromTiled(_map);
 
     // Spawn NPC
     spawnObjects.spawnEnemiesFromTiled(_map);

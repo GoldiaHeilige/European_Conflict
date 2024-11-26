@@ -17,6 +17,9 @@ public:
 
 	void setMusicVolume(float newVolume);
 	void setSFXVolume(float newVolume);
+
+	void preloadAudio(const std::string& fileName);
+	void preloadAudioBatch(const std::vector<std::string>& fileNames);
 private:
 	static AudioManager* _instance;
 

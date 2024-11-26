@@ -10,7 +10,8 @@ class SpawnObjects {
 public:
     SpawnObjects(cocos2d::Node* parentNode); 
     // Vehicle
-    void spawnCarsFromTiled(cocos2d::TMXTiledMap* map);
+    void spawn_Civil_Normal_Cars_1(cocos2d::TMXTiledMap* map);
+    void spawn_Civil_Normal_Cars_2(cocos2d::TMXTiledMap* map);
 
     // Building & Elements
     void spawn_Building_Industrial_Normal(cocos2d::TMXTiledMap* map);

@@ -48,3 +48,19 @@ void AudioManager::setSFXVolume(float newVolume)
 {
     _sfxVolume = newVolume;
 }
+
+void AudioManager::preloadAudio(const std::string& fileName)
+{
+    auto SFX_PATH = "Audio/SFX/" + fileName;
+    auto MUSIC_PATH = "Audio/Music/" + fileName;
+    AudioEngine::preload(SFX_PATH);
+    AudioEngine::preload(MUSIC_PATH);
+}
+
+void AudioManager::preloadAudioBatch(const std::vector<std::string>& fileNames)
+{
+    for (const auto& fileName : fileNames)
+    {
+        preloadAudio(fileName);
+    }
+}

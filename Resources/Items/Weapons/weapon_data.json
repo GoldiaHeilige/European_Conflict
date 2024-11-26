@@ -42,8 +42,8 @@
     "weaponName": "RPG-7",
     "category": "Anti-Tank Launcher",
     "bulletType": "Explosive",
-    "fireSFX": "fire_rocket.wav",
-    "reloadSFX": "reload_RPG.wav",
+    "fireSFX": "fire_rocket.ogg",
+    "reloadSFX": "reload_RPG.ogg",
     "bulletSprite": "launcher1",
     "atk": 200.0,
     "critChance": 100.0,
@@ -54,6 +54,6 @@
     "weaponMag": 1,
     "bulletVelocity": 350.0,
     "ammoType": 40,
-    "reloadTime": 5
+    "reloadTime": 2
   }
 ]

@@ -11,7 +11,7 @@ WeaponCtrl* WeaponCtrl::getInstance() {
 }
 
 WeaponCtrl::WeaponCtrl()
-    : _currentWeaponID(1) {}
+    : _currentWeaponID(0) {}
 
 WeaponCtrl::~WeaponCtrl() {}
 
@@ -36,7 +36,7 @@ void WeaponCtrl::setCurrentWeapon(int weaponID) {
         _weaponReload->cancelReload(scene);
     }
 
-    if (_ammoManager.getCurrentAmmo() > 0) {
+    if (_currentWeaponID > 0) {  // Chỉ cache nếu đã có vũ khí trước đó
         _ammoCache[_currentWeaponID] = _ammoManager.getCurrentAmmo();
         _totalAmmoCache[_currentWeaponID] = _ammoManager.getTotalAmmo();
     }
@@ -61,6 +61,12 @@ void WeaponCtrl::setCurrentWeapon(int weaponID) {
 }
 
 void WeaponCtrl::fireBullet(cocos2d::Node* characterNode, const cocos2d::Vec2& direction) {
+
+    if (_currentWeaponID == 0 || _currentWeaponStat._weaponID == 0) {
+        CCLOG("Error: Attempted to fire an invalid weapon (ID = %d).", _currentWeaponID);
+        return;
+    }
+
     if (_weaponReload->isReloading()) {
         CCLOG("Cannot fire while reloading.");
         return;

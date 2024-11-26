@@ -13,20 +13,31 @@ Enemy* Enemy::create(EntityInfo* info, EntityStat* entityStat)
 	return nullptr;
 }
 
-bool Enemy::init(EntityInfo* info, EntityStat* entityStat)
-{
-	if (!Entity::init(info, entityStat))
-	{
+Enemy::~Enemy() {
+	if (_entityStat) {
+		delete _entityStat;
+		_entityStat = nullptr;
+	}
+}
+
+bool Enemy::init(EntityInfo* info, EntityStat* entityStat) {
+	if (!Entity::init(info, entityStat)) {
 		return false;
 	}
 
-	EntityInfo* enemyInfo = nullptr;
-	EntityStat* enemyStat = nullptr;
-	if (!EnemyType::getInstance()->getEnemyData(info->_name, enemyInfo, enemyStat)) {
-		CCLOG("Error: Could not retrieve enemy data for %s", info->_name.c_str());
+	if (!info || !entityStat) {
+		CCLOG("Error: Invalid EntityInfo or EntityStat provided for Enemy.");
 		return false;
 	}
-	_entityStat = enemyStat;
+
+	_entityStat = new EntityStat(*entityStat);
+
+	if (!_model || _model->getContentSize().width <= 0) {
+		CCLOG("Error: Enemy model is invalid or uninitialized.");
+		delete _entityStat; 
+		_entityStat = nullptr;
+		return false;
+	}
 
 	auto material = PhysicsMaterial(1, 0, 1);
 	auto body = PhysicsBody::createCircle(_model->getContentSize().width / 3.2);
@@ -37,8 +48,12 @@ bool Enemy::init(EntityInfo* info, EntityStat* entityStat)
 	return true;
 }
 
-void Enemy::takeDame(float dame)
-{
+void Enemy::takeDame(float dame) {
+	if (!_entityStat) {
+		CCLOG("Error: Enemy's EntityStat is null. Cannot take damage.");
+		return;
+	}
+
 	_entityStat->_hp -= dame;
 	CCLOG("Current Enemy HP: %f", _entityStat->_hp);
 

@@ -65,6 +65,7 @@ bool Bullet::onContactBegin(cocos2d::PhysicsContact& contact)
         }
         else {
             CCLOG("Target is not damageable.");
+            onHitNonDamageable();
         }
 
         this->removeFromParentAndCleanup(true); 
@@ -75,4 +76,9 @@ bool Bullet::onContactBegin(cocos2d::PhysicsContact& contact)
 void Bullet::onHit(IDamageable* target) {
     // Default behavior does nothing, but can be overridden by subclasses
     CCLOG("Default onHit: Bullet hit target, but no effect in base class.");
+}
+
+void Bullet::onHitNonDamageable() {
+    // Phương thức này có thể được override trong các lớp con nếu cần
+    CCLOG("Base Bullet: Hit non-damageable target, no action in base class.");
 }

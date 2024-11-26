@@ -32,6 +32,9 @@ Bullet* BulletManager::createBullet(Entity* entity, const std::string& bulletSpr
     if (bulletType == "Kinetic") {
         return KineticProjectile::create(entity, bulletSprite);
     }
+    else if (bulletType == "Explosive") {
+        return ExplosiveProjectile::create(entity, bulletSprite);  
+    }
 
     return nullptr;
 }

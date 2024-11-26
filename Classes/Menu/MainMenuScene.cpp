@@ -1,4 +1,5 @@
 ﻿#include "MainMenuScene.h"
+#include "GameData/ResourcesManager.h"
 #include "Map/IntroScene.h"
 #include "audio/include/AudioEngine.h"
 #include "ui/CocosGUI.h"
@@ -28,6 +29,8 @@ bool MainMenuScene::init()
 
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
+
+    preloadResources();
 
     /**********
     *
@@ -195,15 +198,24 @@ void MainMenuScene::onExit()
 
 void MainMenuScene::onEnter()
 {
-    Scene::onEnter();
+    //Scene::onEnter();
 
-    // Restart the background music if it is not currently playing
-    if (_mainMenuAudio == -1 || AudioEngine::getState(_mainMenuAudio) != AudioEngine::AudioState::PLAYING) {
-        _mainMenuAudio = AudioEngine::play2d("Sounds/Music/Main Menu Music", true);
-    }
+    //if (_mainMenuAudio == -1 || AudioEngine::getState(_mainMenuAudio) != AudioEngine::AudioState::PLAYING) {
+    //    _mainMenuAudio = AudioEngine::play2d("Sounds/Music/Main Menu Music", true);
+    //}
 }
 
 void MainMenuScene::menuCloseCallback(Ref* pSender)
 {
     Director::getInstance()->end();
+}
+
+void MainMenuScene::preloadResources()
+{
+    auto resMgr = ResourcesManager::getInstance();
+
+    resMgr->preloadSpritesFromDirectory("Map/LocationPortraits/MainMenu.png");
+    resMgr->preloadSpritesFromDirectory("UI/MainMenuVignette.png");
+
+    AudioManager::getInstance()->playMusic("Main Menu Music.ogg");
 }

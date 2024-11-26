@@ -2,8 +2,8 @@
 
 SpawnObjects::SpawnObjects(cocos2d::Node* parentNode) : _parentNode(parentNode) {}
 
-void SpawnObjects::spawnCarsFromTiled(cocos2d::TMXTiledMap* map) {
-    auto objectCarLayer = map->getObjectGroup("Car Normal");
+void SpawnObjects::spawn_Civil_Normal_Cars_1(cocos2d::TMXTiledMap* map) {
+    auto objectCarLayer = map->getObjectGroup("Civil Normal Vehicle");
     auto _objectsCar = objectCarLayer->getObjects();
 
     if (_objectsCar.empty()) {
@@ -24,7 +24,7 @@ void SpawnObjects::spawnCarsFromTiled(cocos2d::TMXTiledMap* map) {
             float collisionHeight = objectInfo["collision_height"].asFloat();
 
             std::string imageName = objectInfo["name"].asString();
-            std::string imagePath = "Vehicle/Civil Vehicle/Civil Normal/" + imageName + ".png";
+            std::string imagePath = "Vehicle/Civil Vehicle/Small Normal Vehicle_1/" + imageName + ".png";
 
             if (cocos2d::FileUtils::getInstance()->isFileExist(imagePath)) {
                 auto carSprite = cocos2d::Sprite::create(imagePath);
@@ -47,6 +47,58 @@ void SpawnObjects::spawnCarsFromTiled(cocos2d::TMXTiledMap* map) {
                     float rotation = objectInfo.find("rotation") != objectInfo.end() ? objectInfo["rotation"].asFloat() : 0.0f;
                     carSprite->setRotation(rotation);
                     
+                    _parentNode->addChild(carSprite, 1);
+                }
+            }
+        }
+    }
+}
+
+void SpawnObjects::spawn_Civil_Normal_Cars_2(cocos2d::TMXTiledMap* map) {
+    auto objectCarLayer = map->getObjectGroup("Civil Normal Vehicle");
+    auto _objectsCar = objectCarLayer->getObjects();
+
+    if (_objectsCar.empty()) {
+        CCLOG("Khong co object nao trong object layer 'Car'.");
+        return;
+    }
+    else {
+        CCLOG("So luong object: %lu", _objectsCar.size());
+    }
+
+    for (auto& obj : _objectsCar) {
+        auto objectInfo = obj.asValueMap();
+
+        if (objectInfo["type"].asString() == "car") {
+            float x = objectInfo["x"].asFloat();
+            float y = objectInfo["y"].asFloat();
+            float collisionWidth = objectInfo["collision_width"].asFloat();
+            float collisionHeight = objectInfo["collision_height"].asFloat();
+
+            std::string imageName = objectInfo["name"].asString();
+            std::string imagePath = "Vehicle/Civil Vehicle/Small Normal Vehicle_2/" + imageName + ".png";
+
+            if (cocos2d::FileUtils::getInstance()->isFileExist(imagePath)) {
+                auto carSprite = cocos2d::Sprite::create(imagePath);
+                if (carSprite != nullptr) {
+                    carSprite->setPosition(cocos2d::Vec2(x, y));
+
+                    if (collisionWidth > 0 && collisionHeight > 0) {
+                        auto carBody = cocos2d::PhysicsBody::createBox(cocos2d::Size(collisionWidth, collisionHeight));
+                        carBody->setDynamic(false);
+                        carBody->setContactTestBitmask(3);
+                        carSprite->addComponent(carBody);
+                    }
+                    else {
+                        CCLOG("Custom collision size not found, using default.");
+                    }
+
+                    float scale = objectInfo.find("scale") != objectInfo.end() ? objectInfo["scale"].asFloat() : 1.0f;
+                    carSprite->setScale(scale);
+
+                    float rotation = objectInfo.find("rotation") != objectInfo.end() ? objectInfo["rotation"].asFloat() : 0.0f;
+                    carSprite->setRotation(rotation);
+
                     _parentNode->addChild(carSprite, 1);
                 }
             }
@@ -283,6 +335,9 @@ void SpawnObjects::spawnEnemiesFromTiled(cocos2d::TMXTiledMap* map) {
 
                 _parentNode->addChild(enemy);
                 CCLOG("Spawned enemy %s at (%f, %f)", enemyName.c_str(), x, y);
+            }
+            else {
+                CCLOG("Failed to create enemy %s due to initialization failure.", enemyName.c_str());
             }
         }
         else {
