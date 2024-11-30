@@ -21,15 +21,15 @@ bool Entity::init(EntityInfo* info, EntityStat* entityStat)
     _info = info;
 
     AnimationUtils::loadSpriteFrameCache("Entity/" + _info->_type + "/", _info->_name);
-    auto idle = AnimationUtils::createAnimation(_info->_name, 1.0f);
-    Animate* animateIdle = Animate::create(idle.first);
-    auto idleLoop = RepeatForever::create(animateIdle);
+    //auto idle = AnimationUtils::createAnimation(_info->_name, 1.0f);
+    //Animate* animateIdle = Animate::create(idle.first);
+    //auto idleLoop = RepeatForever::create(animateIdle);
 
-    _model = Sprite::createWithSpriteFrameName("./" + _info->_name + " (1)");
-    this->addChild(_model, 2);
-    _model->runAction(idleLoop);
+    //_model = Sprite::createWithSpriteFrameName("./" + _info->_name + " (1)");
+    //this->addChild(_model, 2);
+    //_model->runAction(idleLoop);
 
-    _model->setAnchorPoint(Vec2(0.5, 0.5));
+    //_model->setAnchorPoint(Vec2(0.5, 0.5));
 
     return true;
 }

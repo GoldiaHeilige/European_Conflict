@@ -17,7 +17,7 @@ bool IntroScene::init()
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
     _physicsWorld->setGravity(Vec2::ZERO);
-    _physicsWorld->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+    /*_physicsWorld->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);*/
 
     _map = TMXTiledMap::create("Map/Tutorial_Map.tmx");
     this->addChild(_map);
@@ -30,17 +30,20 @@ bool IntroScene::init()
     heroStat->_spd = 3;
     heroStat->_hp = 100;
 
-    auto hero = Character::create(charInfo, heroStat);
+    //auto hero = Character::create(charInfo, heroStat);
 
     _character = Character::create(charInfo, heroStat);
     _character->setPosition(visibleSize / 2);
     _character->setName("Hero");
     this->addChild(_character, 1);
-    this->addChild(KeyboardInput::getInstance());
-    this->addChild(MouseInput::getInstance());
 
-    auto followPlayer = cocos2d::Follow::create(_character, Rect(0, 0, _map->getMapSize().width * _map->getTileSize().width, _map->getMapSize().height * _map->getTileSize().height));
+    auto proximitySound = new ProximitySound(_character);
+
+    auto followPlayer = Follow::create(_character);
     this->runAction(followPlayer);
+
+    _hudLayer = HUDLayer::create();
+    this->addChild(_hudLayer, 1);
 
     auto mouseEvent = EventListenerMouse::create();
     mouseEvent->onMouseMove = CC_CALLBACK_1(IntroScene::onMouseMove, this);
@@ -61,6 +64,9 @@ bool IntroScene::init()
     // Spawn NPC
     spawnObjects.spawnEnemiesFromTiled(_map);
 
+
+     this->addChild(KeyboardInput::getInstance());
+    this->addChild(MouseInput::getInstance());
     this->scheduleUpdate();
     return true;
 }
@@ -86,4 +92,26 @@ void IntroScene::onMouseMove(Event* event)
 {
     auto mouseEvent = static_cast<EventMouse*>(event);
     _currentMousePos = Vec2(mouseEvent->getCursorX(), mouseEvent->getCursorY());
+}
+
+void IntroScene::onEnter()
+{
+    Scene::onEnter();
+
+    ResourcesManager::getInstance()->preloadResourcesForGroup("Game");
+    ResourcesManager::getInstance()->releaseResourcesForGroup("Menu");
+}
+
+void IntroScene::onExit(Ref* pSender)
+{
+
+    ResourcesManager::getInstance()->releaseResourcesForGroup("Game");
+
+    auto scene = MainMenuScene::create();  
+    Director::getInstance()->replaceScene(TransitionFade::create(1.0f, scene));
+}
+
+void IntroScene::preloadResources()
+{
+    auto resMgr = ResourcesManager::getInstance();
 }

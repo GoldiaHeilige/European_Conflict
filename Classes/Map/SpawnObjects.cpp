@@ -10,9 +10,9 @@ void SpawnObjects::spawn_Civil_Normal_Cars_1(cocos2d::TMXTiledMap* map) {
         CCLOG("Khong co object nao trong object layer 'Car'.");
         return;
     }
-    else {
-        CCLOG("So luong object: %lu", _objectsCar.size());
-    }
+    //else {
+    //    CCLOG("So luong object: %lu", _objectsCar.size());
+    //}
 
     for (auto& obj : _objectsCar) {
         auto objectInfo = obj.asValueMap();
@@ -62,9 +62,9 @@ void SpawnObjects::spawn_Civil_Normal_Cars_2(cocos2d::TMXTiledMap* map) {
         CCLOG("Khong co object nao trong object layer 'Car'.");
         return;
     }
-    else {
-        CCLOG("So luong object: %lu", _objectsCar.size());
-    }
+    //else {
+    //    CCLOG("So luong object: %lu", _objectsCar.size());
+    //}
 
     for (auto& obj : _objectsCar) {
         auto objectInfo = obj.asValueMap();
@@ -116,9 +116,9 @@ void SpawnObjects::spawn_Building_Industrial_Normal(cocos2d::TMXTiledMap* map) {
         CCLOG("Khong co object nao trong object layer 'Building'.");
         return;
     }
-    else {
-        CCLOG("So luong object: %lu", _objects_Industrial_Building_Normal.size());
-    }
+    //else {
+    //    CCLOG("So luong object: %lu", _objects_Industrial_Building_Normal.size());
+    //}
 
     for (auto& obj : _objects_Industrial_Building_Normal) {
         auto objectInfo = obj.asValueMap();
@@ -172,9 +172,9 @@ void SpawnObjects::spawn_Building_Industrial_Broken(cocos2d::TMXTiledMap* map) {
         CCLOG("Khong co object nao trong object layer 'Building'.");
         return;
     }
-    else {
-        CCLOG("So luong object: %lu", _object_Industrial_Building_Broken.size());
-    }
+    //else {
+    //    CCLOG("So luong object: %lu", _object_Industrial_Building_Broken.size());
+    //}
 
     for (auto& obj : _object_Industrial_Building_Broken) {
         auto objectInfo = obj.asValueMap();
@@ -225,9 +225,9 @@ void SpawnObjects::spawn_Industrial_Elements_Broken(cocos2d::TMXTiledMap* map) {
         CCLOG("Khong co object nao trong object layer 'element'.");
         return;
     }
-    else {
-        CCLOG("So luong object: %lu", _object_Industrial_Elements_Broken.size());
-    }
+    //else {
+    //    CCLOG("So luong object: %lu", _object_Industrial_Elements_Broken.size());
+    //}
 
     for (auto& obj : _object_Industrial_Elements_Broken) {
         auto objectInfo = obj.asValueMap();

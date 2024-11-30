@@ -15,7 +15,10 @@ void WeaponFire::fireBullet(cocos2d::Node* characterNode, const cocos2d::Vec2& d
         bullet->setName("Hero Bullet");
 
         characterNode->getParent()->addChild(bullet);
+
         /*AudioManager::getInstance()->playSFX(weaponStat._fireSFX);*/
+
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("update_ammo_display");
     }
     else {
         CCLOG("Error: Bullet creation failed!");

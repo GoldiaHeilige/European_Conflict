@@ -12,8 +12,11 @@ class ResourcesManager
 {
 public:
     static ResourcesManager* getInstance();
-
     // Preload tất cả các sprite từ thư mục
+
+    void preloadAllSpritesFromDirectory(const std::string& directory);
+
+    // Preload sprite từ thư mục
     void preloadSpritesFromDirectory(const std::string& directory);
 
     // Preload plist

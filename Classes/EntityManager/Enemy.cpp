@@ -32,12 +32,27 @@ bool Enemy::init(EntityInfo* info, EntityStat* entityStat) {
 
 	_entityStat = new EntityStat(*entityStat);
 
+	//std::string spriteFileName = "Entity/" + info->_type + "/" + info->_name + ".png";
+	//_model = Sprite::create(spriteFileName);
+
+	AnimationUtils::loadSpriteFrameCache("Entity/" + _info->_type + "/", _info->_name);
+	auto idle = AnimationUtils::createAnimation(_info->_name, 1.0f);
+	Animate* animateIdle = Animate::create(idle.first);
+	auto idleLoop = RepeatForever::create(animateIdle);
+
+	_model = Sprite::createWithSpriteFrameName("./" + _info->_name + " (1)");
+	_model->runAction(idleLoop);
+
+	_model->setAnchorPoint(Vec2(0.5, 0.5));
+
 	if (!_model || _model->getContentSize().width <= 0) {
 		CCLOG("Error: Enemy model is invalid or uninitialized.");
 		delete _entityStat; 
 		_entityStat = nullptr;
 		return false;
 	}
+
+	this->addChild(_model, 2);
 
 	auto material = PhysicsMaterial(1, 0, 1);
 	auto body = PhysicsBody::createCircle(_model->getContentSize().width / 3.2);
@@ -71,7 +86,6 @@ void Enemy::die()
 	this->removeChild(_model);
 
 	AnimationUtils::loadSpriteFrameCache("Entity/" + _info->_type + "/", _info->_name + "_Death");
-
 	auto deathAnimation = AnimationUtils::createAnimation(_info->_name + "_Death", 1.0f);
 	auto animateDeath = Animate::create(deathAnimation.first);
 

@@ -4,18 +4,18 @@
  <dict>
   <key>frames</key>
   <dict>
-   <key>./Hero (1)</key>
+   <key>./Hero_GrenadeLauncher (1)</key>
    <dict>
     <key>aliases</key>
     <array/>
     <key>spriteOffset</key>
-    <string>{-1,1}</string>
+    <string>{-1,-1}</string>
     <key>spriteSize</key>
-    <string>{20,28}</string>
+    <string>{22,36}</string>
     <key>spriteSourceSize</key>
-    <string>{22,30}</string>
+    <string>{64,64}</string>
     <key>textureRect</key>
-    <string>{{0,0},{20,28}}</string>
+    <string>{{0,0},{22,36}}</string>
     <key>textureRotated</key>
     <false/>
    </dict>
@@ -25,9 +25,9 @@
    <key>format</key>
    <integer>3</integer>
    <key>size</key>
-   <string>{22,30}</string>
+   <string>{24,38}</string>
    <key>textureFileName</key>
-   <string>Hero.png</string>
+   <string>Hero_GrenadeLauncher.png</string>
   </dict>
  </dict>
 </plist>

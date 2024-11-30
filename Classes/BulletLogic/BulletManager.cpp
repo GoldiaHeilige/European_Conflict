@@ -8,7 +8,7 @@ BulletManager* BulletManager::getInstance()
 {
     if (_instance == nullptr) {
         _instance = new BulletManager();
-        _instance->retain(); 
+        _instance->retain();
     }
     return _instance;
 }
@@ -33,7 +33,7 @@ Bullet* BulletManager::createBullet(Entity* entity, const std::string& bulletSpr
         return KineticProjectile::create(entity, bulletSprite);
     }
     else if (bulletType == "Explosive") {
-        return ExplosiveProjectile::create(entity, bulletSprite);  
+        return ExplosiveProjectile::create(entity, bulletSprite);
     }
 
     return nullptr;

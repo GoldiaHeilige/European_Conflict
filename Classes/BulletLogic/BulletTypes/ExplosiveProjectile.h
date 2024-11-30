@@ -2,6 +2,7 @@
 #define __EXPLOSIVE_PROJECTILE_H__
 
 #include "BulletLogic/Bullet.h"
+#include "Audio/ProximitySound.h"
 #include "cocos2d.h"
 #include "EntityManager/IDamageable.h"
 #include "AnimManager/AnimationUtils.h"  
@@ -20,6 +21,8 @@ private:
     void applyExplosionDamage(const cocos2d::Vec2& explosionCenter);
 
     int _impactSFXID;
+
+    ProximitySound* _proximitySound = nullptr;
 };
 
 #endif // __EXPLOSIVE_PROJECTILE_H__

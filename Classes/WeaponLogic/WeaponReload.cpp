@@ -30,6 +30,8 @@ void WeaponReload::startReload(cocos2d::Node* scene) {
     auto reloadSequence = cocos2d::Sequence::create(delay, reloadComplete, nullptr);
     reloadSequence->setTag(RELOAD_ACTION_TAG);
 
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("update_ammo_display");
+
     scene->stopActionByTag(RELOAD_ACTION_TAG);
     scene->runAction(reloadSequence);
 }

@@ -36,7 +36,7 @@ void WeaponCtrl::setCurrentWeapon(int weaponID) {
         _weaponReload->cancelReload(scene);
     }
 
-    if (_currentWeaponID > 0) {  // Chỉ cache nếu đã có vũ khí trước đó
+    if (_currentWeaponID > 0) {  
         _ammoCache[_currentWeaponID] = _ammoManager.getCurrentAmmo();
         _totalAmmoCache[_currentWeaponID] = _ammoManager.getTotalAmmo();
     }
@@ -58,6 +58,10 @@ void WeaponCtrl::setCurrentWeapon(int weaponID) {
 
     CCLOG("Weapon switched to ID: %d", weaponID);
     CCLOG("Current Ammo: %d / %d", _ammoManager.getCurrentAmmo(), _ammoManager.getTotalAmmo());
+
+    auto category = _currentWeaponStat._category;  
+    cocos2d::Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("WeaponChanged", &category); 
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("update_ammo_display");
 }
 
 void WeaponCtrl::fireBullet(cocos2d::Node* characterNode, const cocos2d::Vec2& direction) {

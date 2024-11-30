@@ -10,7 +10,7 @@ ExplosiveProjectile* ExplosiveProjectile::create(Entity* entity, const std::stri
     ExplosiveProjectile* newProjectile = new ExplosiveProjectile();
     if (newProjectile && newProjectile->init(entity, bulletSprite)) {
         newProjectile->_explosiveDamage = WeaponCtrl::getInstance()->getCurrentWeaponStat()._atk;
-        newProjectile->_damageRadius = 100.0f;  // Adjust Radius Damage here
+        newProjectile->_damageRadius = 120.0f;  // Adjust Radius Damage here
         newProjectile->autorelease();
         return newProjectile;
     }

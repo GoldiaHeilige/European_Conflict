@@ -1,4 +1,4 @@
-#include "ResourcesManager.h"
+﻿#include "ResourcesManager.h"
 #include "AnimManager/AnimationUtils.h"
 
 ResourcesManager* ResourcesManager::_instance = nullptr;
@@ -10,6 +10,37 @@ ResourcesManager* ResourcesManager::getInstance()
         _instance = new ResourcesManager();
     }
     return _instance;
+}
+
+void ResourcesManager::preloadAllSpritesFromDirectory(const std::string& directory)
+{
+    auto fileUtils = FileUtils::getInstance();
+    auto fullPath = fileUtils->fullPathForFilename(directory);
+    auto files = fileUtils->listFiles(fullPath);
+
+    for (const auto& file : files)
+    {
+        if (file.find(".plist") != std::string::npos)
+        {
+            std::string plistPath = file;
+            std::string texturePath = file;
+            texturePath.replace(texturePath.find(".plist"), 6, ".png");
+
+            SpriteFrameCache::getInstance()->addSpriteFramesWithFile(plistPath);
+            Director::getInstance()->getTextureCache()->addImage(texturePath);
+
+            addToGroup("AllSprites", plistPath);
+            CCLOG("Preloaded sprite frames from plist: %s", plistPath.c_str());
+        }
+        else if (file.find(".png") != std::string::npos || file.find(".jpg") != std::string::npos)
+        {
+            Director::getInstance()->getTextureCache()->addImage(file);
+            addToGroup("AllSprites", file);
+            CCLOG("Preloaded texture: %s", file.c_str());
+        }
+    }
+
+    CCLOG("Preloaded all sprites from directory: %s", directory.c_str());
 }
 
 void ResourcesManager::preloadSpritesFromDirectory(const std::string& directory)
@@ -42,36 +73,42 @@ void ResourcesManager::preloadResourcesForGroup(const std::string& group)
 {
     if (group == "Menu")
     {
-        preloadPlist("Resources/Map/MapHUD/", "menu_sprites");
-        preloadPlist("Resources/UI/", "menu_sprites");
-        preloadPlist("Resources/UI/Saving/", "menu_sprites");
+        //preloadPlist("Map/MapHUD/", "menu_sprites");
+        //preloadPlist("UI/", "menu_sprites");
+        //preloadPlist("UI/Saving/", "menu_sprites");
 
-        preloadSpritesFromDirectory("Resources/Map/LocationPortraits");
-        preloadSpritesFromDirectory("Resources/UI/");
+        preloadSpritesFromDirectory("Map/LocationPortraits");
+        preloadSpritesFromDirectory("UI/");
     }
     else if (group == "Game")
     {
-        preloadPlist("Resources/Effects/Weapon Effect/", "game_sprites");
-        preloadPlist("Resources/Effects/Roof_fire/", "game_sprites");
-        preloadPlist("Resources/Entity/Character/", "game_sprites");
-        preloadPlist("Resources/Entity/Enemy/", "game_sprites");
+        preloadPlist("Effects/Weapon Effect/", "LauncherExplosion");
+        //preloadPlist("Effects/Roof_fire/", "game_sprites");
+        
+        // Entity Animation
+        preloadPlist("Entity/Character/", "Hero");
+        preloadPlist("Entity/Character/", "Hero_Death");
+        preloadPlist("Entity/Enemy/", "Enemy3_Rifle_Death");
+        preloadPlist("Entity/Enemy/", "Enemy4_Rifle_Death");
 
-        preloadSpritesFromDirectory("Resources/Building");
-        preloadSpritesFromDirectory("Resources/Building/Building Small");
-        preloadSpritesFromDirectory("Resources/Building/Building Small/Elements");
-        preloadSpritesFromDirectory("Resources/Building/Building Warehouses");
-        preloadSpritesFromDirectory("Resources/Building/Building Warehouses/Elements");
-        preloadSpritesFromDirectory("Resources/Building/building_industrial");
-        preloadSpritesFromDirectory("Resources/Building/building_industrial/Elements");
-        preloadSpritesFromDirectory("Resources/Bullet");
+        // Building & Object Sprites
+        //preloadAllSpritesFromDirectory("Building/Building Small");
+        //preloadAllSpritesFromDirectory("Building/Building Small/Elements");
+        //preloadAllSpritesFromDirectory("Building/Building Warehouses");
+        //preloadAllSpritesFromDirectory("Building/Building Warehouses/Elements");
+        //preloadAllSpritesFromDirectory("Building/building_industrial");
+        //preloadAllSpritesFromDirectory("Building/building_industrial/Elements");
+        //preloadAllSpritesFromDirectory("Bullet");
 
-        preloadSpritesFromDirectory("Resources/Entity/Character");
-        preloadSpritesFromDirectory("Resources/Entity/Enemy");
+        //// Entity Sprites
+        //preloadAllSpritesFromDirectory("Entity/Character");
+        //preloadAllSpritesFromDirectory("Entity/Enemy");
 
-        preloadSpritesFromDirectory("Resources/Vehicle/Civi Vehicle/Big Normal Vehicle_1");
-        preloadSpritesFromDirectory("Resources/Vehicle/Civi Vehicle/Broken Vehicle");
-        preloadSpritesFromDirectory("Resources/Vehicle/Civi Vehicle/Small Normal Vehicle_1");
-        preloadSpritesFromDirectory("Resources/Vehicle/Civi Vehicle/Small Normal Vehicle_2");
+        //// Vehicle Sprites
+        //preloadAllSpritesFromDirectory("Vehicle/Civi Vehicle/Big Normal Vehicle_1");
+        //preloadAllSpritesFromDirectory("Vehicle/Civi Vehicle/Broken Vehicle");
+        //preloadAllSpritesFromDirectory("Vehicle/Civi Vehicle/Small Normal Vehicle_1");
+        //preloadAllSpritesFromDirectory("Vehicle/Civi Vehicle/Small Normal Vehicle_2");
     }
 }
 
@@ -84,11 +121,21 @@ void ResourcesManager::releaseResourcesForGroup(const std::string& group)
     {
         if (resource.find(".plist") != std::string::npos)
         {
+            // Giải phóng các sprite frame
             SpriteFrameCache::getInstance()->removeSpriteFramesFromFile(resource);
+
+            // Xóa texture liên quan nếu có
+            std::string textureFile = resource;
+            textureFile.replace(textureFile.find(".plist"), 6, ".png");
+            Director::getInstance()->getTextureCache()->removeTextureForKey(textureFile);
+
+            CCLOG("Released sprite frames from plist: %s", resource.c_str());
         }
         else if (resource.find(".png") != std::string::npos)
         {
+            // Giải phóng các texture riêng lẻ
             Director::getInstance()->getTextureCache()->removeTextureForKey(resource);
+            CCLOG("Released texture: %s", resource.c_str());
         }
     }
 

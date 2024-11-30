@@ -1,6 +1,5 @@
 ﻿#include "Character.h"
 #include "WeaponLogic/WeaponCtrl.h"
-#include "BulletLogic/Bullet.h"
 
 Character* Character::create(EntityInfo* info, EntityStat* entityStat) {
     auto character = new Character();
@@ -17,6 +16,16 @@ bool Character::init(EntityInfo* info, EntityStat* entityStat) {
         return false;
     }
 
+    _stat = entityStat;
+
+    if (!_model) {
+        std::string initialSprite = getSpriteFileNameForCategory("");  
+        _model = Sprite::create(initialSprite);
+        if (_model) {
+            this->addChild(_model);
+        }
+    }
+
     auto characterBody = PhysicsBody::createBox(this->getContentSize());
     characterBody->setDynamic(true);
     characterBody->setContactTestBitmask(true);
@@ -25,11 +34,19 @@ bool Character::init(EntityInfo* info, EntityStat* entityStat) {
     return true;
 }
 
-void Character::takeDame(int dame) {
-    _entityStat->_hp -= dame;
-    CCLOG("Hero took %d damage, remaining HP: %f", dame, _entityStat->_hp);
+Character::Character() : _model(nullptr), _stat(nullptr) {}
 
-    if (_entityStat->_hp <= 0) {
+Character::~Character() {
+    if (_model) {
+        _model->removeFromParent();
+    }
+}
+
+void Character::takeDame(int dame) {
+    _stat->_hp -= dame;
+    CCLOG("Hero took %d damage, remaining HP: %f", dame, _stat->_hp);
+
+    if (_stat->_hp <= 0) {
         die();
     }
 }
@@ -46,7 +63,7 @@ void Character::die() {
     auto deathAnimation = AnimationUtils::createAnimation(_info->_name + "_Death", 1.0f);
     auto animateDeath = Animate::create(deathAnimation.first);
 
-    auto deathSprite = Sprite::createWithSpriteFrameName("./" + _info->_name + "_Death" + " (1)");
+    auto deathSprite = Sprite::createWithSpriteFrameName(_info->_name + "_Death (1)");
     this->addChild(deathSprite);
 
     auto sequence = Sequence::create(
@@ -61,14 +78,14 @@ void Character::die() {
 }
 
 void Character::shoot(Vec2 direction) {
-    WeaponCtrl::getInstance()->fireBullet(this, direction); 
+    WeaponCtrl::getInstance()->fireBullet(this, direction);
 }
 
 void Character::move(Vec2 direction) {
     if (direction.isZero()) {
         return;
     }
-    this->setPosition(this->getPosition() + direction * _entityStat->_spd);
+    this->setPosition(this->getPosition() + direction * _stat->_spd);
 }
 
 void Character::rotateBody(float angle) {
@@ -76,9 +93,53 @@ void Character::rotateBody(float angle) {
     _model->setRotation(-CC_RADIANS_TO_DEGREES(angle) + correctionAngle);
 }
 
-void Character::onEnter() {
-    Node::onEnter();
-}
-
 void Character::update(float dt) {
 }
+
+void Character::onEnter() {
+    Node::onEnter();
+
+    cocos2d::Director::getInstance()->getEventDispatcher()->addCustomEventListener(
+        "WeaponChanged", [this](cocos2d::EventCustom* event) {
+            std::string* weaponCategory = static_cast<std::string*>(event->getUserData());
+            this->updateSpriteBasedOnWeaponCategory(*weaponCategory);
+        });
+}
+
+void Character::onExit() {
+    cocos2d::Director::getInstance()->getEventDispatcher()->removeCustomEventListeners("WeaponChanged");
+    Node::onExit();
+}
+
+void Character::updateSpriteBasedOnWeaponCategory(const std::string& category) {
+    std::string spriteFileName = getSpriteFileNameForCategory(category);
+
+    if (_model) {
+        this->removeChild(_model, true); 
+    }
+
+    _model = Sprite::create(spriteFileName);
+    if (_model) {
+        this->addChild(_model);
+    }
+}
+
+std::string Character::getSpriteFileNameForCategory(const std::string& category) {
+    std::string basePath = "Entity/" + _info->_type + "/";
+
+    if (category == "Pistol") {
+        return basePath + "Hero_Pistol.png"; 
+    }
+    else if (category == "Submachine Gun") {
+        return basePath + "Hero_Rifle.png";  
+    }
+    else if (category == "Assault Rifle") {
+        return basePath + "Hero_Rifle.png";  
+    }
+    else if (category == "Grenade Launcher") {
+        return basePath + "Hero_GrenadeLauncher.png";  
+    }
+
+    return basePath + "Hero.png"; 
+}
+

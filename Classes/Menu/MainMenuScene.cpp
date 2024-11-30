@@ -30,8 +30,6 @@ bool MainMenuScene::init()
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-    preloadResources();
-
     /**********
     *
     *  FIRST GAME LABEL
@@ -179,6 +177,8 @@ void MainMenuScene::switchToGameScene(Ref* pSender)
     AudioEngine::play2d("Sounds/UI/UI_labelSelect.ogg");
     showNameInputOverlay();
 
+    ResourcesManager::getInstance()->releaseResourcesForGroup("Menu");
+
     //auto scene = IntroScene::createIntroScene();
     //Director::getInstance()->replaceScene(TransitionFade::create(1.0f, scene));
 }
@@ -198,24 +198,17 @@ void MainMenuScene::onExit()
 
 void MainMenuScene::onEnter()
 {
-    //Scene::onEnter();
+    Scene::onEnter();
 
-    //if (_mainMenuAudio == -1 || AudioEngine::getState(_mainMenuAudio) != AudioEngine::AudioState::PLAYING) {
-    //    _mainMenuAudio = AudioEngine::play2d("Sounds/Music/Main Menu Music", true);
-    //}
+    ResourcesManager::getInstance()->preloadResourcesForGroup("Menu");
+    ResourcesManager::getInstance()->releaseResourcesForGroup("Game");
+
+    if (_mainMenuAudio == -1 || AudioEngine::getState(_mainMenuAudio) != AudioEngine::AudioState::PLAYING) {
+        _mainMenuAudio = AudioEngine::play2d("Sounds/Music/Main Menu Music", true);
+    }
 }
 
 void MainMenuScene::menuCloseCallback(Ref* pSender)
 {
     Director::getInstance()->end();
-}
-
-void MainMenuScene::preloadResources()
-{
-    auto resMgr = ResourcesManager::getInstance();
-
-    resMgr->preloadSpritesFromDirectory("Map/LocationPortraits/MainMenu.png");
-    resMgr->preloadSpritesFromDirectory("UI/MainMenuVignette.png");
-
-    AudioManager::getInstance()->playMusic("Main Menu Music.ogg");
 }
