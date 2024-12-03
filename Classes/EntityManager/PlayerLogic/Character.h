@@ -1,8 +1,8 @@
 ﻿#ifndef __CHARACTER_H__
 #define __CHARACTER_H__
 
-#include "Entity.h"
-#include "IDamageable.h"
+#include "EntityManager/Entity.h"
+#include "EntityManager/IDamageable.h"
 #include "AnimManager/AnimationUtils.h"
 #include "Menu/MainMenuScene.h"
 #include "WeaponLogic/WeaponCtrl.h"

@@ -3,8 +3,8 @@
 
 #include "cocos2d.h"
 #include "AnimManager/AnimationUtils.h"
-#include "EntityManager/EnemyType.h"
-#include "EntityManager/Enemy.h"
+#include "EntityManager/EnemyLogic/EnemyType.h"
+#include "EntityManager/EnemyLogic/Enemy.h"
 
 class SpawnObjects {
 public:

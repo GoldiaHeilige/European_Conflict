@@ -16,6 +16,8 @@ public:
     virtual bool init();
 
     void updateAmmoDisplay();
+    void updateHUDPosition(Vec2 playerPosition);
+    void updateWithPlayerPosition(Vec2 playerPosition);
 
 private:
     Label* _ammoLabel;

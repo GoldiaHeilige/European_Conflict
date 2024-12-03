@@ -55,3 +55,20 @@ void HUDLayer::updateAmmoDisplay()
     _ammoLabel->setString("Ammo: " + std::to_string(_currentAmmo));
     _totalAmmoLabel->setString("Total Ammo: " + std::to_string(_totalAmmo));
 }
+
+void HUDLayer::updateHUDPosition(Vec2 playerPosition)
+{
+    // Sử dụng vị trí của player để điều chỉnh vị trí HUD
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    Vec2 visibleOrigin = Director::getInstance()->getVisibleOrigin();
+
+    // Cập nhật vị trí của HUD sao cho luôn ở góc phải trên
+    // Không thay đổi vị trí của HUDLayer, chỉ di chuyển các label bên trong HUDLayer
+    _ammoLabel->setPosition(visibleOrigin.x + visibleSize.width - 150, visibleOrigin.y + 50);
+    _totalAmmoLabel->setPosition(visibleOrigin.x + visibleSize.width - 150, visibleOrigin.y + 20);
+}
+
+void HUDLayer::updateWithPlayerPosition(Vec2 playerPosition)
+{
+    updateHUDPosition(playerPosition);  // Cập nhật vị trí HUD
+}

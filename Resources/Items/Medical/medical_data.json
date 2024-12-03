@@ -1,0 +1,38 @@
+[
+  {
+    "id": "med_01",
+    "name": "HP Box",
+    "description": "Restores a large amount of health.",
+    "heal_amount": 100,
+    "stack_size": 3,
+    "weight": 1.5,
+    "icon": "Items/Medical/HP Box.png",
+    "use_time": 2.0,
+    "cooldown": 5.0,
+    "effect_type": "heal"
+  },
+  {
+    "id": "med_02",
+    "name": "Bandage",
+    "description": "Restores a small amount of health and stops bleeding.",
+    "heal_amount": 30,
+    "stack_size": 5,
+    "weight": 0.5,
+    "icon": "Items/Medical/HP Box.png",
+    "use_time": 1.0,
+    "cooldown": 3.0,
+    "effect_type": "heal"
+  },
+  {
+    "id": "med_03",
+    "name": "Painkiller",
+    "description": "Temporarily reduces damage taken.",
+    "heal_amount": 0,
+    "stack_size": 2,
+    "weight": 0.3,
+    "icon": "Items/Medical/HP Box.png",
+    "use_time": 1.5,
+    "cooldown": 10.0,
+    "effect_type": "reduce_damage"
+  }
+]

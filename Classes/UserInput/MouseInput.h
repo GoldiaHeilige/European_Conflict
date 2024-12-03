@@ -2,7 +2,7 @@
 #define __MOUSE_INPUT_H__
 
 #include "cocos2d.h"
-#include "EntityManager/Character.h"
+#include "EntityManager/PlayerLogic/Character.h"
 
 USING_NS_CC;
 

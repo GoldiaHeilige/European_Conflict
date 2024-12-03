@@ -1,4 +1,7 @@
 ﻿#include "IntroScene.h"
+#include "EntityManager/PlayerLogic/Character.h"
+#include "EntityManager/EnemyLogic/Enemy.h"
+#include "EntityManager/IDamageable.h"
 
 Scene* IntroScene::createIntroScene()
 {
@@ -26,11 +29,7 @@ bool IntroScene::init()
     charInfo->_type = "Character";
     charInfo->_name = "Hero";
 
-    auto heroStat = new EntityStat();
-    heroStat->_spd = 3;
-    heroStat->_hp = 100;
-
-    //auto hero = Character::create(charInfo, heroStat);
+    auto playerStats = PlayerStatsManager::getInstance()->getPlayerStats();
 
     _character = Character::create(charInfo, heroStat);
     _character->setPosition(visibleSize / 2);
@@ -39,11 +38,11 @@ bool IntroScene::init()
 
     auto proximitySound = new ProximitySound(_character);
 
-    auto followPlayer = Follow::create(_character);
+    auto followPlayer = Follow::create(_character, Rect::ZERO);
     this->runAction(followPlayer);
 
     _hudLayer = HUDLayer::create();
-    this->addChild(_hudLayer, 1);
+    this->addChild(_hudLayer);
 
     auto mouseEvent = EventListenerMouse::create();
     mouseEvent->onMouseMove = CC_CALLBACK_1(IntroScene::onMouseMove, this);
@@ -52,8 +51,8 @@ bool IntroScene::init()
     // Events for Map
 
 
-    // Spawn Objects
     SpawnObjects spawnObjects(this);
+    // Spawn Objects
     //spawnObjects.spawn_Civil_Normal_Cars_1(_map);
     //spawnObjects.spawn_Civil_Normal_Cars_2(_map);
     //spawnObjects.spawn_Building_Industrial_Normal(_map);
@@ -64,8 +63,14 @@ bool IntroScene::init()
     // Spawn NPC
     spawnObjects.spawnEnemiesFromTiled(_map);
 
+    // Spawn Items
+    SpawnItems spawnItems(this);
+    spawnItems.spawnMedicalFromTiled(_map);
 
-     this->addChild(KeyboardInput::getInstance());
+
+
+
+    this->addChild(KeyboardInput::getInstance());
     this->addChild(MouseInput::getInstance());
     this->scheduleUpdate();
     return true;
@@ -73,6 +78,12 @@ bool IntroScene::init()
 
 void IntroScene::update(float dt)
 {
+    if (_hudLayer)
+    {
+        Vec2 playerPosition = _character->getPosition();
+        _hudLayer->updateWithPlayerPosition(playerPosition);
+    }
+
     _character->move(KeyboardInput::getInstance()->getDirection());
     Vec2 worldMousePos = this->convertToNodeSpace(_currentMousePos);
 

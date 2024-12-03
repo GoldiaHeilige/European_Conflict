@@ -4,8 +4,8 @@
 #include <random>
 #include <cmath>
 #include <cstdlib>
-#include "Entity.h"
-#include "IDamageable.h"
+#include "EntityManager/Entity.h"
+#include "EntityManager/IDamageable.h"
 #include "AnimManager/AnimationUtils.h"
 
 class Enemy : public Entity, public IDamageable

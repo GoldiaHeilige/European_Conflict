@@ -3,8 +3,8 @@
 
 #include <unordered_map>
 #include <string>
-#include "EntityStat.h"
-#include "EntityInfo.h"
+#include "EntityManager/EntityStat.h"
+#include "EntityManager/EntityInfo.h"
 
 class EnemyType {
 public:

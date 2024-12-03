@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 #include "WeaponLogic/WeaponCtrl.h"
-#include "EntityManager/Character.h"
+#include "EntityManager/PlayerLogic/Character.h"
 
 USING_NS_CC;
 

@@ -1,6 +1,6 @@
 ﻿#include "KineticProjectile.h"
 #include "WeaponLogic/WeaponCtrl.h"
-#include "EntityManager/Enemy.h"
+#include "EntityManager/EnemyLogic/Enemy.h"
 #include <vector>
 #include <cstdlib>
 

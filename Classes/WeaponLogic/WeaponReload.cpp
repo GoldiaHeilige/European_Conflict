@@ -11,6 +11,7 @@ void WeaponReload::startReload(cocos2d::Node* scene) {
     }
 
     _isReloading = true;
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("update_ammo_display");
     CCLOG("Reloading...");
 
     /*_reloadSFXID = AudioManager::getInstance()->playSFX(_weaponStat._reloadSFX);*/
@@ -29,8 +30,6 @@ void WeaponReload::startReload(cocos2d::Node* scene) {
 
     auto reloadSequence = cocos2d::Sequence::create(delay, reloadComplete, nullptr);
     reloadSequence->setTag(RELOAD_ACTION_TAG);
-
-    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("update_ammo_display");
 
     scene->stopActionByTag(RELOAD_ACTION_TAG);
     scene->runAction(reloadSequence);
