@@ -22,7 +22,7 @@
  </group>
  <group id="16" name="Item Groups">
   <objectgroup id="17" name="Item Spawn">
-   <object id="8" x="1088" y="2752">
+   <object id="8" name="HP Box" x="1088" y="2752">
     <point/>
    </object>
   </objectgroup>

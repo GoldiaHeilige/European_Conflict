@@ -11,6 +11,7 @@ public:
     std::string _dieSFX;   // Play die SFX when entity is dead
 
     float _hp;  // Health Point of an Entity
+    float _maxHp; // Max Health Point of an Entity
     float _spd; // Speed of an Entity
     float _armor; // Armor of an Entity
 };

@@ -30,6 +30,7 @@ bool KeyboardInput::init() {
     this->addKey(EventKeyboard::KeyCode::KEY_1);
     this->addKey(EventKeyboard::KeyCode::KEY_2);
     this->addKey(EventKeyboard::KeyCode::KEY_3);
+    this->addKey(EventKeyboard::KeyCode::KEY_TAB);
 
     // event keyboard
     auto listener = EventListenerKeyboard::create();
@@ -64,9 +65,12 @@ void KeyboardInput::removeKey(EventKeyboard::KeyCode key) {
 void KeyboardInput::onKeyPressed(EventKeyboard::KeyCode key, Event* ev) {
     auto scene = cocos2d::Director::getInstance()->getRunningScene();
 
-    if (_keys.find(key) == _keys.end()) return;
+    if (_keys.find(key) == _keys.end()) {
+        addKey(key);  
+    }
 
     _keys[key] = true;
+
     switch (key) {
     case EventKeyboard::KeyCode::KEY_W:
     case EventKeyboard::KeyCode::KEY_UP_ARROW:
@@ -96,6 +100,12 @@ void KeyboardInput::onKeyPressed(EventKeyboard::KeyCode key, Event* ev) {
     case EventKeyboard::KeyCode::KEY_3:
         WeaponCtrl::getInstance()->setCurrentWeapon(3);
         break;
+    case EventKeyboard::KeyCode::KEY_TAB:
+    {
+        auto scene = Director::getInstance()->getRunningScene();
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("TOGGLE_INVENTORY");
+        break;
+    }
     default:
         break;
     }

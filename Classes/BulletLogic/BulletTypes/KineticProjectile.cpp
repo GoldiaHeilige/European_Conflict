@@ -21,7 +21,6 @@ void KineticProjectile::onHit(IDamageable* target)
 {
     CCLOG("Kinetic projectile hit the target! Damage: %f", _dmg);
 
-    // Tạo danh sách các file âm thanh cho va chạm với Entity
     std::vector<std::string> hitEntitySounds = {
         "hit_zombie1.ogg"
         "hit_zombie2.ogg",

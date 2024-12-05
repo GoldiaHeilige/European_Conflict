@@ -1,6 +1,10 @@
 ﻿#include "Character.h"
 #include "WeaponLogic/WeaponCtrl.h"
 
+EntityStat* Character::getStat() {
+    return _stat;
+}
+
 Character* Character::create(EntityInfo* info, EntityStat* entityStat) {
     auto character = new Character();
     if (character != nullptr && character->init(info, entityStat)) {
@@ -104,12 +108,14 @@ void Character::onEnter() {
             std::string* weaponCategory = static_cast<std::string*>(event->getUserData());
             this->updateSpriteBasedOnWeaponCategory(*weaponCategory);
         });
+
 }
 
 void Character::onExit() {
     cocos2d::Director::getInstance()->getEventDispatcher()->removeCustomEventListeners("WeaponChanged");
     Node::onExit();
 }
+
 
 void Character::updateSpriteBasedOnWeaponCategory(const std::string& category) {
     std::string spriteFileName = getSpriteFileNameForCategory(category);

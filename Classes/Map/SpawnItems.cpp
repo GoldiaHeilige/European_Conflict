@@ -1,4 +1,4 @@
-#include "SpawnItems.h"
+﻿#include "SpawnItems.h"
 
 using namespace cocos2d;
 
@@ -29,13 +29,9 @@ void SpawnItems::spawnMedicalFromTiled(TMXTiledMap* map) {
             auto itemSprite = Sprite::create(stat->_icon);
             if (itemSprite != nullptr) {
                 itemSprite->setPosition(Vec2(x, y));
+                itemSprite->setName(itemName);
                 _parentNode->addChild(itemSprite);
-
-                CCLOG("Spawned medical item %s at (%f, %f)", itemName.c_str(), x, y);
             }
-        }
-        else {
-            CCLOG("Medical item with name %s not found in MedicalType data.", itemName.c_str());
         }
     }
 }

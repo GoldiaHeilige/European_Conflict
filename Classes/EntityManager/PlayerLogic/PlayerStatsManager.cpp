@@ -22,7 +22,8 @@ void PlayerStatsManager::initializePlayerStats()
     if (_playerStats == nullptr)
     {
         _playerStats = new EntityStat();
-        _playerStats->_hp = 100.0f; // default HP
+        _playerStats->_hp = 10.0f; // default HP
+        _playerStats->_maxHp = 100.0f;
         _playerStats->_spd = 3.0f;  // default speed
         _playerStats->_armor = 0.0f; // default armor
     }

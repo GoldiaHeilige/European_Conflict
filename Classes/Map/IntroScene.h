@@ -4,9 +4,7 @@
 #include "cocos2d.h"
 #include "GameData/ResourcesManager.h"
 #include "Interface/HUDLayer.h"
-#include "EntityManager/PlayerLogic/Character.h"
-#include "EntityManager/EnemyLogic/Enemy.h"
-#include "EntityManager/IDamageable.h"
+#include "Interface/InventoryManager.h"
 #include "Menu/MainMenuScene.h"
 
 #include "UserInput/KeyboardInput.h"

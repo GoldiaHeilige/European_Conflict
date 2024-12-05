@@ -334,7 +334,7 @@ void SpawnObjects::spawnEnemiesFromTiled(cocos2d::TMXTiledMap* map) {
                 enemy->setRotation(rotation);
 
                 _parentNode->addChild(enemy);
-                CCLOG("Spawned enemy %s at (%f, %f)", enemyName.c_str(), x, y);
+                //CCLOG("Spawned enemy %s at (%f, %f)", enemyName.c_str(), x, y);
             }
             else {
                 CCLOG("Failed to create enemy %s due to initialization failure.", enemyName.c_str());

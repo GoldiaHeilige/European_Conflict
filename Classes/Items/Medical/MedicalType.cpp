@@ -38,7 +38,7 @@ void MedicalType::loadMedicalDataFromJSON(const std::string& filePath) {
         if (medicalItem.IsObject() && medicalItem.HasMember("name") && medicalItem["name"].IsString()) {
             MedicalStat stat;
             stat._id = medicalItem["id"].GetString();
-            stat._name = medicalItem["name"].GetString(); // Dùng để spawn từ Tiled
+            stat._name = medicalItem["name"].GetString(); 
             stat._description = medicalItem["description"].GetString();
             stat._healAmount = medicalItem["heal_amount"].GetInt();
             stat._stackSize = medicalItem["stack_size"].GetInt();
@@ -49,7 +49,7 @@ void MedicalType::loadMedicalDataFromJSON(const std::string& filePath) {
             stat._effectType = medicalItem["effect_type"].GetString();
 
             _medicalStats[stat._name] = stat;
-            CCLOG("Loaded medical item: %s", stat._name.c_str());
+            //CCLOG("Loaded medical item: %s", stat._name.c_str());
         }
     }
 }

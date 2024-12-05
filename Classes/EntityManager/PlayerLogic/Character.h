@@ -15,6 +15,7 @@ public:
 
     Character(); 
     virtual ~Character();
+    EntityStat* getStat();
 
     void move(Vec2 direction);
     void rotateBody(float angle);
@@ -27,6 +28,7 @@ public:
 private:
     void die();
     void update(float dt);
+
 
     void updateSpriteBasedOnWeaponCategory(const std::string& category);
     std::string getSpriteFileNameForCategory(const std::string& category);

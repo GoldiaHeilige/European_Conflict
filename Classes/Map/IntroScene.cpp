@@ -1,5 +1,6 @@
 ﻿#include "IntroScene.h"
 #include "EntityManager/PlayerLogic/Character.h"
+#include "EntityManager/PlayerLogic/PlayerStatsManager.h"
 #include "EntityManager/EnemyLogic/Enemy.h"
 #include "EntityManager/IDamageable.h"
 
@@ -19,6 +20,11 @@ bool IntroScene::init()
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
+    auto inventoryManager = InventoryManager::getInstance();
+    inventoryManager->setName("InventoryManager");
+    this->addChild(inventoryManager);
+    CCLOG("InventoryManager added to the scene");
+
     _physicsWorld->setGravity(Vec2::ZERO);
     /*_physicsWorld->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);*/
 
@@ -29,9 +35,9 @@ bool IntroScene::init()
     charInfo->_type = "Character";
     charInfo->_name = "Hero";
 
-    auto playerStats = PlayerStatsManager::getInstance()->getPlayerStats();
+    auto heroStats = PlayerStatsManager::getInstance()->getPlayerStats();
 
-    _character = Character::create(charInfo, heroStat);
+    _character = Character::create(charInfo, heroStats);
     _character->setPosition(visibleSize / 2);
     _character->setName("Hero");
     this->addChild(_character, 1);
