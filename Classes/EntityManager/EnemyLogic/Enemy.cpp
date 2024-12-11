@@ -1,5 +1,6 @@
 ﻿#include "Enemy.h"
 #include "EnemyType.h"
+#include "PhysicsCategory.h"
 
 Enemy* Enemy::create(EntityInfo* info, EntityStat* entityStat)
 {
@@ -56,7 +57,9 @@ bool Enemy::init(EntityInfo* info, EntityStat* entityStat) {
 
 	auto material = PhysicsMaterial(1, 0, 1);
 	auto body = PhysicsBody::createCircle(_model->getContentSize().width / 3.2);
-	body->setContactTestBitmask(2);
+	body->setCategoryBitmask(PhysicsCategory::ENEMY);               
+	body->setCollisionBitmask(PhysicsCategory::BULLET | PhysicsCategory::PLAYER); 
+	body->setContactTestBitmask(PhysicsCategory::BULLET | PhysicsCategory::PLAYER);
 	this->setPhysicsBody(body);
 
 	this->scheduleUpdate();

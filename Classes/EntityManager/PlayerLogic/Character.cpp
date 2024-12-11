@@ -1,5 +1,6 @@
 ﻿#include "Character.h"
 #include "WeaponLogic/WeaponCtrl.h"
+#include "PhysicsCategory.h"
 
 EntityStat* Character::getStat() {
     return _stat;
@@ -32,7 +33,9 @@ bool Character::init(EntityInfo* info, EntityStat* entityStat) {
 
     auto characterBody = PhysicsBody::createBox(this->getContentSize());
     characterBody->setDynamic(true);
-    characterBody->setContactTestBitmask(true);
+    characterBody->setCategoryBitmask(PhysicsCategory::PLAYER);
+    characterBody->setContactTestBitmask(PhysicsCategory::ITEM);         
+    characterBody->setCollisionBitmask(PhysicsCategory::NONE);
     this->addComponent(characterBody);
 
     return true;

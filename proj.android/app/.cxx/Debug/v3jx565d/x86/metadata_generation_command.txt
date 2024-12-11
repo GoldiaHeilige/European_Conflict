@@ -1,0 +1,24 @@
+Executable : E:\Android_SDK\cmake\3.18.1\bin\cmake.exe
+arguments : 
+-HE:\Cocos2d\European_Conflict
+-DCMAKE_SYSTEM_NAME=Android
+-DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+-DCMAKE_SYSTEM_VERSION=16
+-DANDROID_PLATFORM=android-16
+-DANDROID_ABI=x86
+-DCMAKE_ANDROID_ARCH_ABI=x86
+-DANDROID_NDK=E:\Android_SDK\ndk\21.4.7075529
+-DCMAKE_ANDROID_NDK=E:\Android_SDK\ndk\21.4.7075529
+-DCMAKE_TOOLCHAIN_FILE=E:\Android_SDK\ndk\21.4.7075529\build\cmake\android.toolchain.cmake
+-DCMAKE_MAKE_PROGRAM=E:\Android_SDK\cmake\3.18.1\bin\ninja.exe
+-DCMAKE_CXX_FLAGS=-frtti -fexceptions -fsigned-char
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=E:\Cocos2d\European_Conflict\proj.android\app\build\intermediates\cxx\Debug\v3jx565d\obj\x86
+-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=E:\Cocos2d\European_Conflict\proj.android\app\build\intermediates\cxx\Debug\v3jx565d\obj\x86
+-DCMAKE_BUILD_TYPE=Debug
+-BE:\Cocos2d\European_Conflict\proj.android\app\.cxx\Debug\v3jx565d\x86
+-GNinja
+-DANDROID_STL=c++_static
+-DANDROID_TOOLCHAIN=clang
+-DANDROID_ARM_NEON=TRUE
+jvmArgs : 
+

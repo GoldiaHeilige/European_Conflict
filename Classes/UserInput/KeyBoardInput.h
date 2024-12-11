@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 #include "WeaponLogic/WeaponCtrl.h"
-#include "Interface/InventoryUI.h"
+#include "Interface/Inventory/InventoryUI.h"
 
 USING_NS_CC;
 

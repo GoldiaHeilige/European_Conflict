@@ -1,5 +1,6 @@
 ﻿#include "Bullet.h"
 #include "EntityManager/IDamageable.h"
+#include "PhysicsCategory.h"
 #include <typeinfo>
 
 Bullet* Bullet::create(Entity* entity, std::string bulletSprite)
@@ -30,7 +31,9 @@ bool Bullet::init(Entity* entity, const std::string& bulletSprite)
     }
 
     auto body = PhysicsBody::createCircle(_model->getContentSize().width / 3.9);
-    body->setContactTestBitmask(1);
+    body->setCategoryBitmask(PhysicsCategory::BULLET);
+    body->setContactTestBitmask(PhysicsCategory::ENEMY | PhysicsCategory::STATIC_OBJECT | PhysicsCategory::PLAYER);
+    body->setCollisionBitmask(PhysicsCategory::ENEMY | PhysicsCategory::STATIC_OBJECT | PhysicsCategory::PLAYER);
     this->setPhysicsBody(body);
 
     auto physicListener = EventListenerPhysicsContact::create();
@@ -70,6 +73,30 @@ bool Bullet::onContactBegin(cocos2d::PhysicsContact& contact)
 
         this->removeFromParentAndCleanup(true); 
     }
+
+    //if (nodeA && nodeB) {
+    //    int categoryA = contact.getShapeA()->getBody()->getCategoryBitmask();
+    //    int categoryB = contact.getShapeB()->getBody()->getCategoryBitmask();
+
+    //    // Ví dụ: Kiểm tra va chạm giữa đạn và Enemy
+    //    if (categoryA == PhysicsCategory::ENEMY || categoryB == PhysicsCategory::ENEMY) {
+    //        CCLOG("Bullet hit an enemy");
+    //        // Xử lý va chạm
+    //    }
+
+    //    // Kiểm tra va chạm giữa đạn và Static Object
+    //    if (categoryA == PhysicsCategory::STATIC_OBJECT || categoryB == PhysicsCategory::STATIC_OBJECT) {
+    //        CCLOG("Bullet hit a static object");
+    //        // Xử lý va chạm
+    //    }
+
+    //    // Kiểm tra va chạm giữa đạn và Player
+    //    if (categoryA == PhysicsCategory::PLAYER || categoryB == PhysicsCategory::PLAYER) {
+    //        CCLOG("Bullet hit the player");
+    //        // Xử lý va chạm
+    //    }
+    //}
+
     return true;
 }
 

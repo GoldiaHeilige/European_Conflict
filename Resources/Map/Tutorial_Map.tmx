@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="64" tileheight="64" infinite="0" nextlayerid="18" nextobjectid="10">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="64" tileheight="64" infinite="0" nextlayerid="18" nextobjectid="16">
  <tileset firstgid="1" source="Road_Source.tsx"/>
  <tileset firstgid="161" source="Vehicle_Civil_Smal_1.tsx"/>
  <tileset firstgid="215" source="Tileset_Source.tsx"/>
+ <tileset firstgid="295" source="Building_Industrial.tsx"/>
  <group id="3" name="Grounds">
   <layer id="1" name="Grass" width="50" height="50">
    <data encoding="base64">
@@ -22,7 +23,10 @@
  </group>
  <group id="16" name="Item Groups">
   <objectgroup id="17" name="Item Spawn">
-   <object id="8" name="HP Box" x="1088" y="2752">
+   <object id="8" name="HP Box" type="Medical" x="1088" y="2752">
+    <point/>
+   </object>
+   <object id="10" name="HP Box" type="Medical" x="799" y="2892">
     <point/>
    </object>
   </objectgroup>
@@ -45,7 +49,7 @@
    <object id="5" name="Enemy3_Rifle" x="1200" y="2916">
     <point/>
    </object>
-   <object id="6" name="Enemy3_Rifle" x="799" y="2891">
+   <object id="6" name="Enemy3_Rifle" x="890" y="2830">
     <point/>
    </object>
    <object id="7" name="Enemy3_Rifle" x="748" y="2984">
@@ -59,6 +63,8 @@
  </group>
  <group id="8" name="Building Groups">
   <objectgroup id="11" name="Building Industrial Broken"/>
-  <objectgroup id="9" name="Building Industrial Normal"/>
+  <objectgroup id="9" name="Building Industrial Normal">
+   <object id="15" name="building3_color1" type="building" gid="299" x="768" y="2624" width="251" height="133"/>
+  </objectgroup>
  </group>
 </map>

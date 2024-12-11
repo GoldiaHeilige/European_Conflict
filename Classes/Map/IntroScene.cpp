@@ -4,6 +4,8 @@
 #include "EntityManager/EnemyLogic/Enemy.h"
 #include "EntityManager/IDamageable.h"
 
+#include "Items/PickupItemLogic.h"
+
 Scene* IntroScene::createIntroScene()
 {
     return IntroScene::create();
@@ -31,6 +33,8 @@ bool IntroScene::init()
     _map = TMXTiledMap::create("Map/Tutorial_Map.tmx");
     this->addChild(_map);
 
+    // Charater Info
+
     auto charInfo = new EntityInfo();
     charInfo->_type = "Character";
     charInfo->_name = "Hero";
@@ -42,6 +46,8 @@ bool IntroScene::init()
     _character->setName("Hero");
     this->addChild(_character, 1);
 
+    // Others
+
     auto proximitySound = new ProximitySound(_character);
 
     auto followPlayer = Follow::create(_character, Rect::ZERO);
@@ -49,6 +55,8 @@ bool IntroScene::init()
 
     _hudLayer = HUDLayer::create();
     this->addChild(_hudLayer);
+
+    // User Event
 
     auto mouseEvent = EventListenerMouse::create();
     mouseEvent->onMouseMove = CC_CALLBACK_1(IntroScene::onMouseMove, this);
@@ -61,7 +69,7 @@ bool IntroScene::init()
     // Spawn Objects
     //spawnObjects.spawn_Civil_Normal_Cars_1(_map);
     //spawnObjects.spawn_Civil_Normal_Cars_2(_map);
-    //spawnObjects.spawn_Building_Industrial_Normal(_map);
+    spawnObjects.spawn_Building_Industrial_Normal(_map);
     //spawnObjects.spawn_Building_Industrial_Broken(_map);
     //spawnObjects.spawn_Industrial_Elements_Broken(_map);
     //spawnObjects.spawnFiresFromTiled(_map);
@@ -73,8 +81,9 @@ bool IntroScene::init()
     SpawnItems spawnItems(this);
     spawnItems.spawnMedicalFromTiled(_map);
 
+    // Other Logic
 
-
+    PickupItemLogic::getInstance()->setupPickupListener(this, _character);
 
     this->addChild(KeyboardInput::getInstance());
     this->addChild(MouseInput::getInstance());

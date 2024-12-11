@@ -4,14 +4,14 @@
 #include "cocos2d.h"
 #include "GameData/ResourcesManager.h"
 #include "Interface/HUDLayer.h"
-#include "Interface/InventoryManager.h"
+#include "Interface/Inventory/InventoryManager.h"
 #include "Menu/MainMenuScene.h"
 
 #include "UserInput/KeyboardInput.h"
 #include "UserInput/MouseInput.h"
 
-#include "Map/SpawnObjects.h"
-#include "Map/SpawnItems.h"
+#include "Map/Spawn Node/SpawnObjects.h"
+#include "Map/Spawn Node/SpawnItems.h"
 
 #include "Audio/ProximitySound.h"
 
